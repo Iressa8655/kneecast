@@ -137,6 +137,29 @@
   .card p{font-size:14.5px;color:var(--muted);margin:12px 0 0}
   @media (max-width:860px){.pillars{grid-template-columns:1fr}}
 
+  /* patient journey */
+  .journey{display:flex;gap:8px;align-items:stretch;overflow-x:auto;padding:16px 0 6px}
+  .jstep{flex:1 0 118px;background:var(--surface-2);border:1px solid var(--line);border-radius:12px;
+    padding:16px 12px;font-size:13.5px;text-align:center;color:var(--muted);
+    display:flex;align-items:center;justify-content:center;position:relative}
+  .jstep.block{background:var(--signal-soft);border-color:color-mix(in srgb,var(--signal) 45%,var(--line));
+    color:var(--signal);font-weight:700}
+  .jstep .tag{position:absolute;top:-11px;left:50%;transform:translateX(-50%);font-family:var(--mono);
+    font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;background:var(--signal);color:#fff;
+    padding:2px 8px;border-radius:5px;white-space:nowrap}
+  .jnote{margin-top:18px;color:var(--muted);font-size:15.5px;max-width:72ch}
+  .jplug{margin-top:10px;font-size:15.5px}
+  .jplug b{color:var(--accent);font-weight:600}
+
+  /* conversion bars */
+  .bars{display:flex;flex-direction:column;gap:13px;margin-top:4px}
+  .barrow{display:grid;grid-template-columns:200px 1fr 46px;gap:14px;align-items:center}
+  .barrow .blbl{font-size:14px;color:var(--muted);text-align:right}
+  .bartrack{background:var(--surface-2);border:1px solid var(--line);border-radius:8px;height:32px;overflow:hidden}
+  .barfill{height:100%;border-radius:7px}
+  .barrow .bval{font-family:var(--mono);font-weight:600;font-size:15px;color:var(--ink)}
+  @media(max-width:620px){.barrow{grid-template-columns:118px 1fr 40px;gap:10px}.barrow .blbl{font-size:12.5px}}
+
   /* clinic split */
   .split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
   .split ul{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:14px}
@@ -175,6 +198,7 @@
     </div>
     <nav>
       <a href="#problem">The problem</a>
+      <a href="#evidence">Evidence</a>
       <a href="#how">How it works</a>
       <a href="#why">Why it's different</a>
       <a class="btn" href="#how">See the model</a>
@@ -245,15 +269,69 @@
   <section id="problem">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div class="eyebrow">The gap</div>
-        <h2>The surgeon's clinic is the bottleneck, and referrals are a guess.</h2>
-        <p>Osteoarthritis is the leading driver of knee-replacement demand, and referrals are rising faster than surgical capacity. Yet the decision of who to send to the surgeon is subjective, with no validated, equitable tool. The result is a clinic full of patients who never needed surgery, while the ones who do wait.</p>
+        <div class="eyebrow">The problem</div>
+        <h2>A common, rising disease feeding a queue no one can prioritise.</h2>
+        <p>Osteoarthritis is the progressive "wear and tear" of joint cartilage, common, rising, and knee-dominated. It drives the largest elective queue in the NHS, yet at the point of referral there is no validated, equitable way to tell who will actually need surgery, so the clinic fills with patients who never needed it while the ones who do wait.</p>
       </div>
       <div class="stats">
-        <div class="tile reveal"><div class="stat num">~1 in 4</div><div class="lbl">of orthopaedic referrals actually convert to surgery, the rest are appointments that could have been avoided.</div></div>
-        <div class="tile reveal"><div class="stat num"><span>2×</span></div><div class="lbl">Specialist-led triage roughly doubles that conversion rate, sending the surgeon the right patients.</div></div>
-        <div class="tile reveal"><div class="stat num">98%</div><div class="lbl">of primary knee replacements are done for osteoarthritis, so this queue is the OA-progression queue.</div></div>
+        <div class="tile reveal"><div class="stat num"><span>595M</span></div><div class="lbl">people worldwide were living with OA in 2020, up 132% since 1990. The knee is the most affected joint.</div></div>
+        <div class="tile reveal"><div class="stat num"><span>8.75M</span></div><div class="lbl">UK adults 45+ treated for OA; it drives 98% of primary knee replacements.</div></div>
+        <div class="tile reveal"><div class="stat num"><span>1.2M</span></div><div class="lbl">people in the Netherlands carry an OA diagnosis, our launch market.</div></div>
       </div>
+    </div>
+  </section>
+
+  <section id="journey">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">The patient journey</div>
+        <h2>Most of the pathway is conservative care. One decision jams it.</h2>
+        <p>From first symptoms to surgery, the patient passes through a long chain of primary and community care. The pinch point is a single, subjective decision.</p>
+      </div>
+      <div class="journey reveal">
+        <div class="jstep">Self-manage<br>(months–years)</div>
+        <div class="jstep">GP / FCP /<br>self-referral</div>
+        <div class="jstep">Conservative<br>care</div>
+        <div class="jstep">Advice &amp;<br>Guidance</div>
+        <div class="jstep block"><span class="tag">Bottleneck</span>Referral<br>decision</div>
+        <div class="jstep">Ortho<br>clinic</div>
+        <div class="jstep">Waiting list<br>→ TKR</div>
+      </div>
+      <p class="jnote reveal">The referral into secondary-care orthopaedics is subjective, with no validated tool. About <b style="color:var(--ink)">1 in 3</b> patients are discharged at the first visit and only <b style="color:var(--ink)">~28%</b> convert to surgery, so the surgeon's clinic fills with people who never needed one.</p>
+      <p class="jplug reveal"><b>KneeCast plugs in here</b> — de-escalate the low-risk to conservative care, fast-track true progressors to the surgeon.</p>
+    </div>
+  </section>
+
+  <section id="evidence">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">The evidence</div>
+        <h2>Who triages a referral changes everything.</h2>
+        <p>Surgical conversion rate, the share of clinic patients who actually proceed to surgery, swings dramatically with who does the triage.</p>
+      </div>
+      <div class="bars reveal">
+        <div class="barrow">
+          <div class="blbl">All doctors → ortho</div>
+          <div class="bartrack"><div class="barfill" style="width:23%;background:var(--muted);opacity:.5"></div></div>
+          <div class="bval">23%</div>
+        </div>
+        <div class="barrow">
+          <div class="blbl">GP referrals</div>
+          <div class="bartrack"><div class="barfill" style="width:28%;background:var(--signal)"></div></div>
+          <div class="bval">28%</div>
+        </div>
+        <div class="barrow">
+          <div class="blbl">Physiotherapy-led triage</div>
+          <div class="bartrack"><div class="barfill" style="width:61%;background:var(--accent)"></div></div>
+          <div class="bval">61%</div>
+        </div>
+        <div class="barrow">
+          <div class="blbl">Sports physicians</div>
+          <div class="bartrack"><div class="barfill" style="width:70%;background:var(--accent-ink)"></div></div>
+          <div class="bval">70%</div>
+        </div>
+      </div>
+      <p class="jnote reveal">A physio-led triage layer roughly <b style="color:var(--ink)">doubles</b> conversion versus a raw GP referral. First-contact triage manages ~87% of MSK patients in primary care, each avoided referral is worth ~£145–200, and one MSK triage service cut referrals ~30% for ~£1m in first-year savings. <b style="color:var(--ink)">KneeCast is the predictive engine for that triage layer.</b></p>
     </div>
   </section>
 
@@ -293,6 +371,10 @@
           <div class="k"><svg viewBox="0 0 24 24" fill="none"><path d="M4 13l4 4L20 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 19h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><h3>Actionable</h3></div>
           <p>The score is turned into referrals and scans avoided, and into a higher surgical conversion rate, an efficiency case a health system can actually cost.</p>
         </div>
+      </div>
+      <div class="guard reveal" style="margin-top:20px">
+        <div class="eyebrow">Grounded in guidance, not data-dredging</div>
+        <p>NICE reviewed exactly this question and found no knee-specific prognostic model. KneeCast's features map onto the predictors NICE endorsed, pain and function scores, non-response to analgesics, symptom duration and X-ray grade, with age, BMI, comorbidity and deprivation as adjustments, and a survival design is the time-to-event method it called for.</p>
       </div>
     </div>
   </section>
