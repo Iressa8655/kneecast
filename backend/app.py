@@ -38,6 +38,37 @@ MODELS = BUNDLE["models"]                       # {"clinical": {...}, "radiograp
 YEARS = [1, 2, 3, 4, 5]
 CURVE_DAYS = np.linspace(0, int(365.25 * 5), 61)   # 0..5y, ~monthly
 
+# Two-stage GP triage. The bands are keyed on 5-year risk and derived from the
+# cohort risk distribution (X-ray = low bar / high sensitivity; surgery referral
+# = high bar). ⚠️ ILLUSTRATIVE placeholders — set with the clinical mentor and a
+# decision-curve / cost-effectiveness analysis before any real use.
+TRIAGE = {
+    "clinical": {            # stage 1: does this knee warrant an X-ray?
+        "question": "Should this knee be X-rayed?",
+        "bands": [
+            (0.04, "green", "X-ray not indicated yet — conservative care, review in ~12 months"),
+            (0.08, "amber", "Consider a weight-bearing knee X-ray"),
+            (2.00, "red",   "Refer for a weight-bearing knee X-ray"),
+        ],
+    },
+    "radiographic": {        # stage 2: refer to an OA specialist for surgery?
+        "question": "Refer to an OA specialist to discuss surgery?",
+        "bands": [
+            (0.05, "green", "Continue conservative care (physio, weight, analgesia); re-review later"),
+            (0.20, "amber", "Routine OA-specialist referral — shared decision-making"),
+            (2.00, "red",   "Priority OA-specialist referral — discuss surgery"),
+        ],
+    },
+}
+
+
+def _triage(mode, risk5):
+    cfg = TRIAGE[mode]
+    for thr, band, action in cfg["bands"]:
+        if risk5 < thr:
+            return {"question": cfg["question"], "band": band, "action": action}
+    return None
+
 # full time support of each model, for the median time-to-event
 def _tmax(mode):
     m = MODELS[mode]["pipe"].named_steps["model"]
@@ -106,6 +137,7 @@ def predict(inp: PredictIn, mode: str = "clinical"):
         "model": BUNDLE["model_name"],
         "risk_by_year": {str(yr): float(1 - sf(365.25 * yr)) for yr in YEARS},
         "risk_5y": float(1 - sf(365.25 * 5)),
+        "triage": _triage(mode, float(1 - sf(365.25 * 5))),
         "expected_time_years": _median_years(mode, sf),   # None if 50% not reached
         "horizon_years": round(TMAX[mode] / 365.25, 1),
         "curve": [{"days": int(d), "risk": float(1 - sf(d))} for d in CURVE_DAYS],

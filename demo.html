@@ -33,6 +33,12 @@
   .imaging.hide{display:none}
   .go{width:100%;margin-top:16px;padding:12px;border:0;border-radius:10px;background:var(--ink);color:#fff;font-size:15px;cursor:pointer}
   .go:hover{background:#000}
+  .triage{margin:2px 0 14px;padding:13px 15px;border-radius:11px;border:1px solid}
+  .triage .q{font-size:11px;letter-spacing:.02em;text-transform:uppercase;opacity:.75}
+  .triage .a{font-size:15px;font-weight:600;margin-top:3px}
+  .triage.green{background:#eef7f1;border-color:#bfe3cd;color:#256b45}
+  .triage.amber{background:#fdf4e7;border-color:#f0d9b5;color:#8a5a1a}
+  .triage.red{background:#fdeeea;border-color:#f3c9bd;color:#b23c1e}
   .headline{display:flex;align-items:baseline;gap:10px;margin:4px 0 2px}
   .headline .big{font-family:var(--serif);font-size:54px;font-weight:600;line-height:1;color:var(--accent)}
   .headline .lbl{color:var(--muted);font-size:13px}
@@ -60,9 +66,12 @@
   <header>
     <a class="back" href="index.html">← KneeCast</a>
     <h1>Try the model</h1>
-    <p>Two separately trained survival models — one on clinical data only, one that
-      also uses the X-ray. Enter a patient (or import a CSV) to get the risk and
-      timing of a <b>total knee replacement</b>. A triage aid, not a diagnosis.</p>
+    <p>A two-step tool for the GP. <b>Stage 1 — clinical only:</b> from the data a
+      GP already has, does this knee warrant an <b>X-ray</b>? <b>Stage 2 — with the
+      X-ray:</b> should the patient be referred to an <b>OA specialist to discuss
+      surgery</b>? Each stage uses its own survival model and returns a risk, a
+      recommendation, and the expected time to a <b>total knee replacement</b>.
+      A triage aid, not a diagnosis. Switch stages with the toggle below.</p>
   </header>
 
   <div class="toolbar">
@@ -72,11 +81,13 @@
     </div>
     <select class="csvbtn" id="exampleSel" title="Load a synthetic example patient">
       <option value="">Load example ▾</option>
-      <option>Surgery ~4 years</option>
-      <option>Surgery ~5 years</option>
-      <option>Surgery ~7 years</option>
-      <option>Surgery ~10 years</option>
+      <option>Healthy knee (no OA)</option>
+      <option>Moderate OA</option>
       <option>No surgery within 10 years</option>
+      <option>Surgery ~10 years</option>
+      <option>Surgery ~7 years</option>
+      <option>Surgery ~5 years</option>
+      <option>Surgery ~4 years</option>
     </select>
     <button class="csvbtn" id="importBtn">⭱ Import CSV</button>
     <button class="csvbtn" id="templateBtn">⭳ Download CSV</button>
@@ -98,6 +109,7 @@
       <div id="empty" class="empty">Fill the form (or import a CSV) and press
         <b>Estimate risk</b>.</div>
       <div id="result" style="display:none">
+        <div class="triage" id="triage"></div>
         <div class="headline"><span class="big" id="big">–</span>
           <span class="lbl">within 5 years<br><span id="modelbadge"></span></span></div>
         <div class="years" id="years"></div>
@@ -113,7 +125,9 @@
     OAI cohort; transportability to other health systems is unvalidated. Outcome =
     <b>total</b> knee replacement (626 events in 4,610 patients). Predictions run
     on a local server standing in for a hospital's own machine — the entered data
-    is not sent to any third party.
+    is not sent to any third party. The referral thresholds (green / amber / red)
+    are <b>illustrative placeholders</b> from the cohort risk distribution, to be
+    set with a clinician and a decision-curve / cost analysis before any real use.
   </div>
 </div>
 
@@ -123,7 +137,7 @@ let MODE = "clinical";
 const apiBase = () => $("#api").value.replace(/\/+$/,"");
 
 // embedded synthetic example patients (same values as examples/*.csv)
-const EXAMPLES = {"Surgery ~4 years":{"V00AGE":77,"P02SEX":2,"P02RACE":1,"P02HISP":0,"P01BMI":38.1,"P01HEIGHT":1674,"P01WEIGHT":105,"V00SMOKER":1,"V00COHORT":1,"V00COMORB":4,"V00WOMKP_worse":18,"V00WOMSTF_worse":7,"V00WOMADL_worse":61,"V00WOMTS_worse":86,"V00KOOSKP_worse":38,"V00KOOSQOL":10,"V00KOOSFSR":11,"V00HSPSS":28.6,"V00HSMSS":42.2,"P01RKSX_worse":2,"V00XRKL_worse":4,"V00XRJSM_worse":3,"V00XRJSL_worse":3,"V00XROSFM_worse":3,"V00XROSTM_worse":3,"V00XROSFL_worse":3,"V00XROSTL_worse":3,"V00XRSCFM_worse":3,"V00XRSCTM_worse":3,"V00XRSCFL_worse":2,"V00XRSCTL_worse":2,"V00XRCHM_worse":1,"V00XRCHL_worse":1,"V00XRCYTM_worse":1,"V00MCMJSW_worse":0.9,"V00JSW150_worse":1.1,"V00JSW200_worse":1.3,"V00JSW250_worse":1.8,"V00JSW300_worse":2.7,"V00LJSW750_worse":2.4,"V00LJSW850_worse":1.6},"Surgery ~5 years":{"V00AGE":76,"P02SEX":2,"P02RACE":1,"P02HISP":0,"P01BMI":37.8,"P01HEIGHT":1674,"P01WEIGHT":105,"V00SMOKER":1,"V00COHORT":1,"V00COMORB":3,"V00WOMKP_worse":17,"V00WOMSTF_worse":7,"V00WOMADL_worse":59,"V00WOMTS_worse":84,"V00KOOSKP_worse":39,"V00KOOSQOL":12,"V00KOOSFSR":13,"V00HSPSS":29.3,"V00HSMSS":42.6,"P01RKSX_worse":2,"V00XRKL_worse":3,"V00XRJSM_worse":3,"V00XRJSL_worse":3,"V00XROSFM_worse":3,"V00XROSTM_worse":3,"V00XROSFL_worse":3,"V00XROSTL_worse":3,"V00XRSCFM_worse":3,"V00XRSCTM_worse":3,"V00XRSCFL_worse":2,"V00XRSCTL_worse":2,"V00XRCHM_worse":1,"V00XRCHL_worse":1,"V00XRCYTM_worse":1,"V00MCMJSW_worse":1,"V00JSW150_worse":1.2,"V00JSW200_worse":1.4,"V00JSW250_worse":1.9,"V00JSW300_worse":2.8,"V00LJSW750_worse":2.5,"V00LJSW850_worse":1.7},"Surgery ~7 years":{"V00AGE":75,"P02SEX":2,"P02RACE":1,"P02HISP":0,"P01BMI":36.9,"P01HEIGHT":1674,"P01WEIGHT":102,"V00SMOKER":1,"V00COHORT":1,"V00COMORB":3,"V00WOMKP_worse":16,"V00WOMSTF_worse":7,"V00WOMADL_worse":56,"V00WOMTS_worse":79,"V00KOOSKP_worse":43,"V00KOOSQOL":17,"V00KOOSFSR":18,"V00HSPSS":30.9,"V00HSMSS":43.6,"P01RKSX_worse":2,"V00XRKL_worse":3,"V00XRJSM_worse":2,"V00XRJSL_worse":2,"V00XROSFM_worse":2,"V00XROSTM_worse":2,"V00XROSFL_worse":2,"V00XROSTL_worse":2,"V00XRSCFM_worse":2,"V00XRSCTM_worse":2,"V00XRSCFL_worse":2,"V00XRSCTL_worse":2,"V00XRCHM_worse":1,"V00XRCHL_worse":1,"V00XRCYTM_worse":1,"V00MCMJSW_worse":1.2,"V00JSW150_worse":1.5,"V00JSW200_worse":1.7,"V00JSW250_worse":2.1,"V00JSW300_worse":3.1,"V00LJSW750_worse":2.8,"V00LJSW850_worse":2},"Surgery ~10 years":{"V00AGE":69,"P02SEX":2,"P02RACE":1,"P02HISP":0,"P01BMI":33.7,"P01HEIGHT":1674,"P01WEIGHT":94,"V00SMOKER":1,"V00COHORT":1,"V00COMORB":3,"V00WOMKP_worse":13,"V00WOMSTF_worse":5,"V00WOMADL_worse":44,"V00WOMTS_worse":62,"V00KOOSKP_worse":56,"V00KOOSQOL":35,"V00KOOSFSR":37,"V00HSPSS":37.2,"V00HSMSS":47.4,"P01RKSX_worse":1,"V00XRKL_worse":3,"V00XRJSM_worse":2,"V00XRJSL_worse":2,"V00XROSFM_worse":2,"V00XROSTM_worse":2,"V00XROSFL_worse":2,"V00XROSTL_worse":2,"V00XRSCFM_worse":2,"V00XRSCTM_worse":2,"V00XRSCFL_worse":1,"V00XRSCTL_worse":1,"V00XRCHM_worse":1,"V00XRCHL_worse":1,"V00XRCYTM_worse":1,"V00MCMJSW_worse":2.2,"V00JSW150_worse":2.5,"V00JSW200_worse":2.7,"V00JSW250_worse":3.1,"V00JSW300_worse":4,"V00LJSW750_worse":3.9,"V00LJSW850_worse":3},"No surgery within 10 years":{"V00AGE":66,"P02SEX":2,"P02RACE":1,"P02HISP":0,"P01BMI":31.8,"P01HEIGHT":1674,"P01WEIGHT":90,"V00SMOKER":1,"V00COHORT":1,"V00COMORB":2,"V00WOMKP_worse":10,"V00WOMSTF_worse":4,"V00WOMADL_worse":36,"V00WOMTS_worse":51,"V00KOOSKP_worse":64,"V00KOOSQOL":46,"V00KOOSFSR":48,"V00HSPSS":40.8,"V00HSMSS":49.6,"P01RKSX_worse":1,"V00XRKL_worse":2,"V00XRJSM_worse":2,"V00XRJSL_worse":2,"V00XROSFM_worse":2,"V00XROSTM_worse":2,"V00XROSFL_worse":2,"V00XROSTL_worse":2,"V00XRSCFM_worse":2,"V00XRSCTM_worse":2,"V00XRSCFL_worse":1,"V00XRSCTL_worse":1,"V00XRCHM_worse":1,"V00XRCHL_worse":1,"V00XRCYTM_worse":1,"V00MCMJSW_worse":2.8,"V00JSW150_worse":3,"V00JSW200_worse":3.2,"V00JSW250_worse":3.7,"V00JSW300_worse":4.5,"V00LJSW750_worse":4.5,"V00LJSW850_worse":3.6}};
+const EXAMPLES = {"Healthy knee (no OA)":{"V00AGE":52,"P02SEX":2,"P02RACE":1,"P02HISP":0,"P01BMI":24,"P01HEIGHT":1674,"P01WEIGHT":68,"V00SMOKER":0,"V00COHORT":2,"V00COMORB":0,"V00WOMKP_worse":0,"V00WOMSTF_worse":0,"V00WOMADL_worse":1,"V00WOMTS_worse":1,"V00KOOSKP_worse":100,"V00KOOSQOL":94,"V00KOOSFSR":95,"V00HSPSS":56,"V00HSMSS":57,"P01RKSX_worse":0,"V00XRKL_worse":0,"V00XRJSM_worse":0,"V00XRJSL_worse":0,"V00XROSFM_worse":0,"V00XROSTM_worse":0,"V00XROSFL_worse":0,"V00XROSTL_worse":0,"V00XRSCFM_worse":0,"V00XRSCTM_worse":0,"V00XRSCFL_worse":0,"V00XRSCTL_worse":0,"V00XRCHM_worse":0,"V00XRCHL_worse":0,"V00XRCYTM_worse":0,"V00MCMJSW_worse":5.6,"V00JSW150_worse":5.9,"V00JSW200_worse":6.1,"V00JSW250_worse":6.5,"V00JSW300_worse":7.1,"V00LJSW750_worse":7.6,"V00LJSW850_worse":6.6},"Moderate OA":{"V00AGE":63,"P02SEX":2,"P02RACE":1,"P02HISP":0,"P01BMI":30,"P01HEIGHT":1674,"P01WEIGHT":84,"V00SMOKER":2,"V00COHORT":1,"V00COMORB":1,"V00WOMKP_worse":8,"V00WOMSTF_worse":3,"V00WOMADL_worse":26,"V00WOMTS_worse":37,"V00KOOSKP_worse":66,"V00KOOSQOL":44,"V00KOOSFSR":45,"V00HSPSS":42,"V00HSMSS":49,"P01RKSX_worse":1,"V00XRKL_worse":3,"V00XRJSM_worse":2,"V00XRJSL_worse":1,"V00XROSFM_worse":2,"V00XROSTM_worse":2,"V00XROSFL_worse":1,"V00XROSTL_worse":1,"V00XRSCFM_worse":1,"V00XRSCTM_worse":1,"V00XRSCFL_worse":0,"V00XRSCTL_worse":0,"V00XRCHM_worse":0,"V00XRCHL_worse":0,"V00XRCYTM_worse":0,"V00MCMJSW_worse":2.8,"V00JSW150_worse":3.1,"V00JSW200_worse":3.3,"V00JSW250_worse":3.8,"V00JSW300_worse":4.6,"V00LJSW750_worse":5,"V00LJSW850_worse":4},"No surgery within 10 years":{"V00AGE":66,"P02SEX":2,"P02RACE":1,"P02HISP":0,"P01BMI":31.8,"P01HEIGHT":1674,"P01WEIGHT":90,"V00SMOKER":1,"V00COHORT":1,"V00COMORB":2,"V00WOMKP_worse":10,"V00WOMSTF_worse":4,"V00WOMADL_worse":36,"V00WOMTS_worse":51,"V00KOOSKP_worse":64,"V00KOOSQOL":46,"V00KOOSFSR":48,"V00HSPSS":40.8,"V00HSMSS":49.6,"P01RKSX_worse":1,"V00XRKL_worse":2,"V00XRJSM_worse":2,"V00XRJSL_worse":2,"V00XROSFM_worse":2,"V00XROSTM_worse":2,"V00XROSFL_worse":2,"V00XROSTL_worse":2,"V00XRSCFM_worse":2,"V00XRSCTM_worse":2,"V00XRSCFL_worse":1,"V00XRSCTL_worse":1,"V00XRCHM_worse":1,"V00XRCHL_worse":1,"V00XRCYTM_worse":1,"V00MCMJSW_worse":2.8,"V00JSW150_worse":3,"V00JSW200_worse":3.2,"V00JSW250_worse":3.7,"V00JSW300_worse":4.5,"V00LJSW750_worse":4.5,"V00LJSW850_worse":3.6},"Surgery ~10 years":{"V00AGE":69,"P02SEX":2,"P02RACE":1,"P02HISP":0,"P01BMI":33.7,"P01HEIGHT":1674,"P01WEIGHT":94,"V00SMOKER":1,"V00COHORT":1,"V00COMORB":3,"V00WOMKP_worse":13,"V00WOMSTF_worse":5,"V00WOMADL_worse":44,"V00WOMTS_worse":62,"V00KOOSKP_worse":56,"V00KOOSQOL":35,"V00KOOSFSR":37,"V00HSPSS":37.2,"V00HSMSS":47.4,"P01RKSX_worse":1,"V00XRKL_worse":3,"V00XRJSM_worse":2,"V00XRJSL_worse":2,"V00XROSFM_worse":2,"V00XROSTM_worse":2,"V00XROSFL_worse":2,"V00XROSTL_worse":2,"V00XRSCFM_worse":2,"V00XRSCTM_worse":2,"V00XRSCFL_worse":1,"V00XRSCTL_worse":1,"V00XRCHM_worse":1,"V00XRCHL_worse":1,"V00XRCYTM_worse":1,"V00MCMJSW_worse":2.2,"V00JSW150_worse":2.5,"V00JSW200_worse":2.7,"V00JSW250_worse":3.1,"V00JSW300_worse":4,"V00LJSW750_worse":3.9,"V00LJSW850_worse":3},"Surgery ~7 years":{"V00AGE":75,"P02SEX":2,"P02RACE":1,"P02HISP":0,"P01BMI":36.9,"P01HEIGHT":1674,"P01WEIGHT":102,"V00SMOKER":1,"V00COHORT":1,"V00COMORB":3,"V00WOMKP_worse":16,"V00WOMSTF_worse":7,"V00WOMADL_worse":56,"V00WOMTS_worse":79,"V00KOOSKP_worse":43,"V00KOOSQOL":17,"V00KOOSFSR":18,"V00HSPSS":30.9,"V00HSMSS":43.6,"P01RKSX_worse":2,"V00XRKL_worse":3,"V00XRJSM_worse":2,"V00XRJSL_worse":2,"V00XROSFM_worse":2,"V00XROSTM_worse":2,"V00XROSFL_worse":2,"V00XROSTL_worse":2,"V00XRSCFM_worse":2,"V00XRSCTM_worse":2,"V00XRSCFL_worse":2,"V00XRSCTL_worse":2,"V00XRCHM_worse":1,"V00XRCHL_worse":1,"V00XRCYTM_worse":1,"V00MCMJSW_worse":1.2,"V00JSW150_worse":1.5,"V00JSW200_worse":1.7,"V00JSW250_worse":2.1,"V00JSW300_worse":3.1,"V00LJSW750_worse":2.8,"V00LJSW850_worse":2},"Surgery ~5 years":{"V00AGE":76,"P02SEX":2,"P02RACE":1,"P02HISP":0,"P01BMI":37.8,"P01HEIGHT":1674,"P01WEIGHT":105,"V00SMOKER":1,"V00COHORT":1,"V00COMORB":3,"V00WOMKP_worse":17,"V00WOMSTF_worse":7,"V00WOMADL_worse":59,"V00WOMTS_worse":84,"V00KOOSKP_worse":39,"V00KOOSQOL":12,"V00KOOSFSR":13,"V00HSPSS":29.3,"V00HSMSS":42.6,"P01RKSX_worse":2,"V00XRKL_worse":3,"V00XRJSM_worse":3,"V00XRJSL_worse":3,"V00XROSFM_worse":3,"V00XROSTM_worse":3,"V00XROSFL_worse":3,"V00XROSTL_worse":3,"V00XRSCFM_worse":3,"V00XRSCTM_worse":3,"V00XRSCFL_worse":2,"V00XRSCTL_worse":2,"V00XRCHM_worse":1,"V00XRCHL_worse":1,"V00XRCYTM_worse":1,"V00MCMJSW_worse":1,"V00JSW150_worse":1.2,"V00JSW200_worse":1.4,"V00JSW250_worse":1.9,"V00JSW300_worse":2.8,"V00LJSW750_worse":2.5,"V00LJSW850_worse":1.7},"Surgery ~4 years":{"V00AGE":77,"P02SEX":2,"P02RACE":1,"P02HISP":0,"P01BMI":38.1,"P01HEIGHT":1674,"P01WEIGHT":105,"V00SMOKER":1,"V00COHORT":1,"V00COMORB":4,"V00WOMKP_worse":18,"V00WOMSTF_worse":7,"V00WOMADL_worse":61,"V00WOMTS_worse":86,"V00KOOSKP_worse":38,"V00KOOSQOL":10,"V00KOOSFSR":11,"V00HSPSS":28.6,"V00HSMSS":42.2,"P01RKSX_worse":2,"V00XRKL_worse":4,"V00XRJSM_worse":3,"V00XRJSL_worse":3,"V00XROSFM_worse":3,"V00XROSTM_worse":3,"V00XROSFL_worse":3,"V00XROSTL_worse":3,"V00XRSCFM_worse":3,"V00XRSCTM_worse":3,"V00XRSCFL_worse":2,"V00XRSCTL_worse":2,"V00XRCHM_worse":1,"V00XRCHL_worse":1,"V00XRCYTM_worse":1,"V00MCMJSW_worse":0.9,"V00JSW150_worse":1.1,"V00JSW200_worse":1.3,"V00JSW250_worse":1.8,"V00JSW300_worse":2.7,"V00LJSW750_worse":2.4,"V00LJSW850_worse":1.6}};
 
 // ---- feature spec: every model input, grouped. `img:true` = only used by the X-ray model.
 const OPT = (pairs)=>pairs;                       // [[value,label],...]
@@ -274,6 +288,11 @@ $("#submitBtn").addEventListener("click",async ()=>{
 
 function render(res){
   $("#empty").style.display="none"; $("#result").style.display="block";
+  const t=res.triage;
+  $("#triage").className="triage "+(t?t.band:"");
+  $("#triage").innerHTML = t
+    ? `<div class="q">${res.mode==="radiographic"?"Stage 2 · GP + X-ray":"Stage 1 · GP, clinical only"} — ${t.question}</div><div class="a">${t.action}</div>`
+    : "";
   $("#big").textContent=Math.round(res.risk_5y*100)+"%";
   $("#modelbadge").textContent=res.mode==="radiographic"?"clinical + X-ray model":"clinical model";
   $("#years").innerHTML=Object.entries(res.risk_by_year).map(([y,v])=>
