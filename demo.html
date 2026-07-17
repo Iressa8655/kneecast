@@ -32,7 +32,11 @@
     border-radius:9px;font:inherit;background:#fff}
   .field .hint{font-size:11px;color:#a2a0b0}
   .xray{border-top:1px dashed var(--line);margin-top:6px;padding-top:14px}
-  .xray-tag{font-size:11px;color:var(--accent2);font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-bottom:10px}
+  .xray-tag{font-size:11px;color:var(--accent2);font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin:0 0 10px}
+  .xgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px 12px}
+  .xgrid .field{margin-bottom:0}
+  .xgrid label{font-size:12px;margin-bottom:2px}
+  .xgrid select,.xgrid input{padding:7px 8px}
   .go{width:100%;margin-top:6px;padding:12px;border:0;border-radius:10px;background:var(--ink);
     color:#fff;font-size:15px;cursor:pointer}
   .go:hover{background:#000}
@@ -88,11 +92,40 @@
           <select name="V00SMOKER"><option value="0">Never</option><option value="1">Current</option><option value="2">Former</option></select></div>
 
         <div class="xray" id="xrayFields" style="display:none">
-          <div class="xray-tag">From the X-ray</div>
-          <div class="field"><label>Kellgren–Lawrence grade <span class="hint">(0 none – 4 severe)</span></label>
-            <select name="V00XRKL_worse"><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option><option value="4">4</option></select></div>
-          <div class="field"><label>Minimum joint-space width (mm) <span class="hint">(lower = worse)</span></label>
-            <input name="V00MCMJSW_worse" type="number" step="0.1" value="3.5"></div>
+          <div class="xray-tag">X-ray — OARSI grades (worst compartment)</div>
+          <div class="xgrid">
+            <div class="field"><label>Kellgren–Lawrence (0–4)</label>
+              <select name="V00XRKL_worse" data-max="4"></select></div>
+            <div class="field"><label>Joint-space narrowing — medial (0–3)</label>
+              <select name="V00XRJSM_worse" data-max="3"></select></div>
+            <div class="field"><label>JSN — lateral (0–3)</label>
+              <select name="V00XRJSL_worse" data-max="3"></select></div>
+            <div class="field"><label>Osteophyte — femur medial (0–3)</label>
+              <select name="V00XROSFM_worse" data-max="3"></select></div>
+            <div class="field"><label>Osteophyte — tibia medial (0–3)</label>
+              <select name="V00XROSTM_worse" data-max="3"></select></div>
+            <div class="field"><label>Osteophyte — femur lateral (0–3)</label>
+              <select name="V00XROSFL_worse" data-max="3"></select></div>
+            <div class="field"><label>Osteophyte — tibia lateral (0–3)</label>
+              <select name="V00XROSTL_worse" data-max="3"></select></div>
+            <div class="field"><label>Sclerosis — femur medial (0–3)</label>
+              <select name="V00XRSCFM_worse" data-max="3"></select></div>
+            <div class="field"><label>Sclerosis — tibia medial (0–3)</label>
+              <select name="V00XRSCTM_worse" data-max="3"></select></div>
+            <div class="field"><label>Chondrocalcinosis — medial (0–1)</label>
+              <select name="V00XRCHM_worse" data-max="1"></select></div>
+            <div class="field"><label>Chondrocalcinosis — lateral (0–1)</label>
+              <select name="V00XRCHL_worse" data-max="1"></select></div>
+            <div class="field"><label>Cyst — tibia medial (0–1)</label>
+              <select name="V00XRCYTM_worse" data-max="1"></select></div>
+          </div>
+          <div class="xray-tag" style="margin-top:14px">Joint-space width (mm, lower = worse)</div>
+          <div class="xgrid">
+            <div class="field"><label>Medial JSW</label>
+              <input name="medialJSW" type="number" step="0.1" value="3.5"></div>
+            <div class="field"><label>Lateral JSW</label>
+              <input name="lateralJSW" type="number" step="0.1" value="6.0"></div>
+          </div>
         </div>
 
         <button class="go" type="submit">Estimate risk</button>
@@ -130,6 +163,21 @@ const $ = s => document.querySelector(s);
 let MODE = "clinical";
 const apiBase = () => $("#api").value.replace(/\/+$/,"");
 
+// medial/lateral JSW inputs map to the model's per-location JSW features
+const MEDIAL_JSW = ["V00MCMJSW_worse","V00JSW150_worse","V00JSW200_worse","V00JSW250_worse","V00JSW300_worse"];
+const LATERAL_JSW = ["V00LJSW750_worse","V00LJSW850_worse"];
+
+// fill each OARSI grade <select> with 0..max, default = a moderate knee
+const GRADE_DEFAULT = {V00XRKL_worse:2, V00XRJSM_worse:1, V00XROSFM_worse:1,
+  V00XROSTM_worse:1, V00XROSFL_worse:1, V00XROSTL_worse:1};
+document.querySelectorAll('#xrayFields select[data-max]').forEach(sel=>{
+  const max = +sel.dataset.max, def = GRADE_DEFAULT[sel.name] ?? 0;
+  for(let i=0;i<=max;i++){
+    const o=document.createElement('option'); o.value=i; o.textContent=i;
+    if(i===def) o.selected=true; sel.appendChild(o);
+  }
+});
+
 async function ping(){
   try{ const h=await (await fetch(apiBase()+"/health")).json();
     $("#dot").className = "dot up"; return h; }
@@ -151,8 +199,17 @@ $("#form").addEventListener("submit", async e=>{
   const fd = new FormData(e.target);
   const features = {};
   for(const [k,v] of fd.entries()){
-    if(MODE==="clinical" && (k==="V00XRKL_worse"||k==="V00MCMJSW_worse")) continue;
+    if(k==="medialJSW"||k==="lateralJSW") continue;      // handled below
     if(v!=="" && v!=null) features[k] = Number(v);
+  }
+  if(MODE==="radiographic"){
+    const med = Number(fd.get("medialJSW")), lat = Number(fd.get("lateralJSW"));
+    if(med) MEDIAL_JSW.forEach(k=>features[k]=med);
+    if(lat) LATERAL_JSW.forEach(k=>features[k]=lat);
+  }else{
+    // clinical mode: drop every imaging feature so nothing radiographic leaks in
+    for(const k of Object.keys(features))
+      if(k.startsWith("V00XR")||k.includes("JSW")) delete features[k];
   }
   try{
     const r = await fetch(`${apiBase()}/predict?mode=${MODE}`,{
