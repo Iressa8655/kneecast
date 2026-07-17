@@ -33,9 +33,42 @@ sys.path.insert(0, str(OAI / "Compare model"))
 import config as C        # noqa: E402
 import data_io            # noqa: E402
 import features           # noqa: E402
-from models import make_pipeline   # noqa: E402
+from preprocessing import build_preprocessor   # noqa: E402
+from sklearn.pipeline import Pipeline          # noqa: E402
+from sksurv.ensemble import RandomSurvivalForest, GradientBoostingSurvivalAnalysis  # noqa: E402
+from sksurv.linear_model import CoxnetSurvivalAnalysis  # noqa: E402
 
-MODEL = "CoxNet"          # smooth monotonic curves + interpretable
+MODEL = "CoxNet"          # penalised Cox: small, smooth curves, extrapolates to
+                          # high risk (RSF is non-parametric and cannot represent
+                          # a "surgery within a few years" patient — its risk is
+                          # capped at the observed leaf event rate)
+
+
+def make_pipeline(name, numeric, categorical):
+    """Build a survival pipeline sized to actually deploy.
+
+    The team's default RSF (300 trees, low_memory=False) writes the full survival
+    curve at every tree node → a ~3.8 GB model that will not load on a laptop.
+    Here RSF is slimmed (fewer, shallower trees) so the frozen model stays ~70 MB
+    and loads in a fraction of a second, while still giving per-patient survival
+    curves. CoxNet/GBSA are small already.
+    """
+    if name == "RSF":
+        model = RandomSurvivalForest(n_estimators=50, min_samples_leaf=100,
+                                     max_features="sqrt", n_jobs=1,
+                                     random_state=C.RANDOM_STATE, low_memory=False)
+        scale = False
+    elif name == "GBSA":
+        model = GradientBoostingSurvivalAnalysis(loss="coxph", learning_rate=0.05,
+                                                 n_estimators=300, max_depth=3,
+                                                 subsample=0.8, random_state=C.RANDOM_STATE)
+        scale = False
+    else:  # CoxNet
+        model = CoxnetSurvivalAnalysis(l1_ratio=0.9, fit_baseline_model=True,
+                                       alpha_min_ratio=0.01, max_iter=100000)
+        scale = True
+    return Pipeline([("pre", build_preprocessor(numeric, categorical, scale=scale)),
+                     ("model", model)])
 # V00SITE is a US centre code stored as a letter (A–E); to_num() turns it into
 # all-NaN, so it is silently dead weight anyway. Drop it: meaningless for a Dutch
 # demo and the transportability liability flagged in the compliance notes.
