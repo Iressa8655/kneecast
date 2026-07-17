@@ -38,6 +38,25 @@ MODELS = BUNDLE["models"]                       # {"clinical": {...}, "radiograp
 YEARS = [1, 2, 3, 4, 5]
 CURVE_DAYS = np.linspace(0, int(365.25 * 5), 61)   # 0..5y, ~monthly
 
+# full time support of each model, for the median time-to-event
+def _tmax(mode):
+    m = MODELS[mode]["pipe"].named_steps["model"]
+    et = getattr(m, "event_times_", None)
+    return float(et[-1]) if et is not None and len(et) else 365.25 * 16
+
+
+TMAX = {mode: _tmax(mode) for mode in MODELS}
+
+
+def _median_years(mode, sf):
+    """Time where cumulative replacement risk first reaches 50% (median time to
+    surgery). None if the patient never reaches 50% within the model's horizon."""
+    grid = np.linspace(0, TMAX[mode], 400)
+    for t in grid:
+        if 1 - float(sf(t)) >= 0.5:
+            return round(t / 365.25, 1)
+    return None
+
 
 def _defaults(mode):
     m = META[mode]
@@ -87,6 +106,8 @@ def predict(inp: PredictIn, mode: str = "clinical"):
         "model": BUNDLE["model_name"],
         "risk_by_year": {str(yr): float(1 - sf(365.25 * yr)) for yr in YEARS},
         "risk_5y": float(1 - sf(365.25 * 5)),
+        "expected_time_years": _median_years(mode, sf),   # None if 50% not reached
+        "horizon_years": round(TMAX[mode] / 365.25, 1),
         "curve": [{"days": int(d), "risk": float(1 - sf(d))} for d in CURVE_DAYS],
         "used_defaults_for": [c for c in cols if c not in inp.features],
         "disclaimer": "Research/education demo — not a medical device. "

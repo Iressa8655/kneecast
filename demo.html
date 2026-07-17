@@ -40,6 +40,11 @@
   .years div{flex:1;min-width:54px;text-align:center;background:#f7f5fa;border-radius:9px;padding:8px 4px}
   .years b{display:block;font-size:18px}.years span{font-size:11px;color:var(--muted)}
   .chart{width:100%;height:auto;display:block;margin-top:8px}
+  .eta{margin-top:16px;padding:14px 16px;background:#f7f5fa;border-radius:11px;border:1px solid var(--line)}
+  .eta .k{font-size:11px;letter-spacing:.03em;text-transform:uppercase;color:var(--muted)}
+  .eta .v{font-family:var(--serif);font-size:26px;font-weight:600;margin-top:2px}
+  .eta .v.soft{font-size:19px;color:var(--muted)}
+  .eta .sub{font-size:11px;color:#a2a0b0;margin-top:2px}
   .note{font-size:12px;color:var(--muted);margin-top:12px}
   .empty{color:#b0aebe;text-align:center;padding:44px 0;font-size:14px}
   .err{color:var(--accent);font-size:13px;margin-top:10px;min-height:1em}
@@ -89,6 +94,7 @@
           <span class="lbl">within 5 years<br><span id="modelbadge"></span></span></div>
         <div class="years" id="years"></div>
         <svg class="chart" viewBox="0 0 360 200" id="chart" role="img" aria-label="Cumulative risk curve"></svg>
+        <div class="eta" id="eta"></div>
         <div class="note" id="note"></div>
       </div>
     </div>
@@ -251,6 +257,12 @@ function render(res){
   $("#years").innerHTML=Object.entries(res.risk_by_year).map(([y,v])=>
     `<div><b>${Math.round(v*100)}%</b><span>${y} yr</span></div>`).join("");
   drawChart(res.curve);
+  const et=res.expected_time_years;
+  $("#eta").innerHTML = et!=null
+    ? `<div class="k">Expected time to surgery</div><div class="v">≈ ${et} years</div>`
+      +`<div class="sub">median — when cumulative risk reaches 50%</div>`
+    : `<div class="k">Expected time to surgery</div><div class="v soft">beyond ${res.horizon_years} years</div>`
+      +`<div class="sub">risk stays under 50% — replacement unlikely within the modelled follow-up</div>`;
   $("#note").textContent="";
 }
 function drawChart(curve){
