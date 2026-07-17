@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+
+# no patient-level data should ever live in this repo
+*.parquet
+*.csv
+*.xlsx
+*.zip
+
+# model artefacts are derived from the access-restricted OAI data — do NOT publish
+# them in this PUBLIC repo. Build locally with backend/train_model.py.
+backend/model.joblib
+backend/meta.json

@@ -1,0 +1,11 @@
+# Install scikit-survival from conda-forge (it ships prebuilt binaries; pip tries
+# to compile ecos and fails on Windows):
+#     conda create -n kneecast -c conda-forge python=3.11 scikit-survival fastapi uvicorn pandas pyarrow joblib
+# The pins below document what the frozen model.joblib was built against.
+scikit-survival>=0.23
+scikit-learn>=1.4
+fastapi>=0.110
+uvicorn>=0.29
+pandas>=2.0
+pyarrow>=15
+joblib>=1.3
