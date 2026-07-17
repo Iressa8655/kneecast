@@ -6,6 +6,8 @@ __pycache__/
 *.csv
 *.xlsx
 *.zip
+# ...except the synthetic example patients for the demo
+!examples/*.csv
 
 # model artefacts are derived from the access-restricted OAI data — do NOT publish
 # them in this PUBLIC repo. Build locally with backend/train_model.py.
