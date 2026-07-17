@@ -6,45 +6,38 @@
 <title>KneeCast — try the model</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='88'>🦵</text></svg>">
 <style>
-  :root{
-    --ink:#1a1a2e; --muted:#6b6b80; --line:#e6e4ec; --bg:#faf8f5; --card:#fff;
-    --accent:#e8663b; --accent2:#2f6f8f;
-    --serif:"Iowan Old Style",Georgia,serif;
-  }
+  :root{--ink:#1a1a2e;--muted:#6b6b80;--line:#e6e4ec;--bg:#faf8f5;--card:#fff;
+    --accent:#e8663b;--accent2:#2f6f8f;--serif:"Iowan Old Style",Georgia,serif;}
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);
-    font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
-  .wrap{max-width:980px;margin:0 auto;padding:28px 20px 60px}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+  .wrap{max-width:1040px;margin:0 auto;padding:28px 20px 60px}
   header h1{font-family:var(--serif);font-weight:600;font-size:clamp(26px,4vw,38px);margin:0 0 4px}
   header p{color:var(--muted);margin:0 0 6px;max-width:62ch}
   a.back{color:var(--accent2);text-decoration:none;font-size:13px}
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}
-  @media(max-width:820px){.grid{grid-template-columns:1fr}}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
-  .card h2{font-size:13px;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
-  .toggle{display:inline-flex;background:#f0eef4;border-radius:10px;padding:3px;margin-bottom:18px}
-  .toggle button{border:0;background:none;padding:8px 14px;border-radius:8px;font-size:13px;
-    cursor:pointer;color:var(--muted)}
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:18px}
+  .toggle{display:inline-flex;background:#f0eef4;border-radius:10px;padding:3px}
+  .toggle button{border:0;background:none;padding:8px 14px;border-radius:8px;font-size:13px;cursor:pointer;color:var(--muted)}
   .toggle button.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.1);font-weight:600}
-  .field{margin-bottom:13px}
-  .field label{display:block;font-size:13px;color:var(--muted);margin-bottom:4px}
-  .field input,.field select{width:100%;padding:9px 10px;border:1px solid var(--line);
-    border-radius:9px;font:inherit;background:#fff}
-  .field .hint{font-size:11px;color:#a2a0b0}
-  .xray{border-top:1px dashed var(--line);margin-top:6px;padding-top:14px}
-  .xray-tag{font-size:11px;color:var(--accent2);font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin:0 0 10px}
-  .xgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px 12px}
-  .xgrid .field{margin-bottom:0}
-  .xgrid label{font-size:12px;margin-bottom:2px}
-  .xgrid select,.xgrid input{padding:7px 8px}
-  .go{width:100%;margin-top:6px;padding:12px;border:0;border-radius:10px;background:var(--ink);
-    color:#fff;font-size:15px;cursor:pointer}
+  .csvbtn{border:1px solid var(--line);background:#fff;border-radius:9px;padding:8px 12px;font-size:13px;cursor:pointer}
+  .csvbtn:hover{border-color:var(--accent2);color:var(--accent2)}
+  .grid{display:grid;grid-template-columns:1.25fr 1fr;gap:22px;margin-top:18px}
+  @media(max-width:860px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .card h2{font-size:13px;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+  .sect-tag{font-size:11px;color:var(--accent2);font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin:16px 0 8px}
+  .sect-tag:first-of-type{margin-top:0}
+  .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px 12px}
+  @media(max-width:520px){.fgrid{grid-template-columns:1fr}}
+  .field label{display:block;font-size:12px;color:var(--muted);margin-bottom:2px}
+  .field input,.field select{width:100%;padding:7px 8px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+  .imaging.hide{display:none}
+  .go{width:100%;margin-top:16px;padding:12px;border:0;border-radius:10px;background:var(--ink);color:#fff;font-size:15px;cursor:pointer}
   .go:hover{background:#000}
   .headline{display:flex;align-items:baseline;gap:10px;margin:4px 0 2px}
   .headline .big{font-family:var(--serif);font-size:54px;font-weight:600;line-height:1;color:var(--accent)}
   .headline .lbl{color:var(--muted);font-size:13px}
   .years{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 4px}
-  .years div{flex:1;min-width:56px;text-align:center;background:#f7f5fa;border-radius:9px;padding:8px 4px}
+  .years div{flex:1;min-width:54px;text-align:center;background:#f7f5fa;border-radius:9px;padding:8px 4px}
   .years b{display:block;font-size:18px}.years span{font-size:11px;color:var(--muted)}
   .chart{width:100%;height:auto;display:block;margin-top:8px}
   .note{font-size:12px;color:var(--muted);margin-top:12px}
@@ -62,83 +55,35 @@
   <header>
     <a class="back" href="index.html">← KneeCast</a>
     <h1>Try the model</h1>
-    <p>Enter the data a clinician already has at the point of referral. The model
-      returns the risk and timing of progressing to a <b>total knee replacement</b>
-      — a number to help triage, not a diagnosis.</p>
+    <p>Two separately trained survival models — one on clinical data only, one that
+      also uses the X-ray. Enter a patient (or import a CSV) to get the risk and
+      timing of a <b>total knee replacement</b>. A triage aid, not a diagnosis.</p>
   </header>
 
-  <div class="toggle" id="toggle">
-    <button data-mode="clinical" class="on">Clinical only</button>
-    <button data-mode="radiographic">With X-ray</button>
+  <div class="toolbar">
+    <div class="toggle" id="toggle">
+      <button data-mode="clinical" class="on">Clinical only</button>
+      <button data-mode="radiographic">With X-ray</button>
+    </div>
+    <button class="csvbtn" id="importBtn">⭱ Import CSV</button>
+    <button class="csvbtn" id="templateBtn">⭳ Download CSV</button>
+    <input type="file" id="csvFile" accept=".csv" style="display:none">
   </div>
 
   <div class="grid">
-    <!-- ---------------- FORM ---------------- -->
     <div class="card">
       <h2>Patient at referral</h2>
-      <form id="form">
-        <div class="field"><label>Age (years)</label><input name="V00AGE" type="number" value="64"></div>
-        <div class="field"><label>Sex</label>
-          <select name="P02SEX"><option value="2">Female</option><option value="1">Male</option></select></div>
-        <div class="field"><label>BMI</label><input name="P01BMI" type="number" step="0.1" value="29"></div>
-        <div class="field"><label>WOMAC pain — affected knee <span class="hint">(0 none – 20 worst)</span></label>
-          <input name="V00WOMKP_worse" type="number" value="6"></div>
-        <div class="field"><label>WOMAC function / ADL — affected knee <span class="hint">(0 – 68)</span></label>
-          <input name="V00WOMADL_worse" type="number" value="20"></div>
-        <div class="field"><label>KOOS quality of life <span class="hint">(0 worst – 100 best)</span></label>
-          <input name="V00KOOSQOL" type="number" value="55"></div>
-        <div class="field"><label>Comorbidity count</label><input name="V00COMORB" type="number" value="0"></div>
-        <div class="field"><label>Smoking</label>
-          <select name="V00SMOKER"><option value="0">Never</option><option value="1">Current</option><option value="2">Former</option></select></div>
-
-        <div class="xray" id="xrayFields" style="display:none">
-          <div class="xray-tag">X-ray — OARSI grades (worst compartment)</div>
-          <div class="xgrid">
-            <div class="field"><label>Kellgren–Lawrence (0–4)</label>
-              <select name="V00XRKL_worse" data-max="4"></select></div>
-            <div class="field"><label>Joint-space narrowing — medial (0–3)</label>
-              <select name="V00XRJSM_worse" data-max="3"></select></div>
-            <div class="field"><label>JSN — lateral (0–3)</label>
-              <select name="V00XRJSL_worse" data-max="3"></select></div>
-            <div class="field"><label>Osteophyte — femur medial (0–3)</label>
-              <select name="V00XROSFM_worse" data-max="3"></select></div>
-            <div class="field"><label>Osteophyte — tibia medial (0–3)</label>
-              <select name="V00XROSTM_worse" data-max="3"></select></div>
-            <div class="field"><label>Osteophyte — femur lateral (0–3)</label>
-              <select name="V00XROSFL_worse" data-max="3"></select></div>
-            <div class="field"><label>Osteophyte — tibia lateral (0–3)</label>
-              <select name="V00XROSTL_worse" data-max="3"></select></div>
-            <div class="field"><label>Sclerosis — femur medial (0–3)</label>
-              <select name="V00XRSCFM_worse" data-max="3"></select></div>
-            <div class="field"><label>Sclerosis — tibia medial (0–3)</label>
-              <select name="V00XRSCTM_worse" data-max="3"></select></div>
-            <div class="field"><label>Chondrocalcinosis — medial (0–1)</label>
-              <select name="V00XRCHM_worse" data-max="1"></select></div>
-            <div class="field"><label>Chondrocalcinosis — lateral (0–1)</label>
-              <select name="V00XRCHL_worse" data-max="1"></select></div>
-            <div class="field"><label>Cyst — tibia medial (0–1)</label>
-              <select name="V00XRCYTM_worse" data-max="1"></select></div>
-          </div>
-          <div class="xray-tag" style="margin-top:14px">Joint-space width (mm, lower = worse)</div>
-          <div class="xgrid">
-            <div class="field"><label>Medial JSW</label>
-              <input name="medialJSW" type="number" step="0.1" value="3.5"></div>
-            <div class="field"><label>Lateral JSW</label>
-              <input name="lateralJSW" type="number" step="0.1" value="6.0"></div>
-          </div>
-        </div>
-
-        <button class="go" type="submit">Estimate risk</button>
-      </form>
+      <form id="form"></form>
+      <button class="go" id="submitBtn">Estimate risk</button>
       <div class="apibar"><span class="dot" id="dot"></span>Model server:
         <input id="api" value="http://127.0.0.1:8000"></div>
       <div class="err" id="err"></div>
     </div>
 
-    <!-- ---------------- RESULT ---------------- -->
     <div class="card">
       <h2>Estimated risk of total knee replacement</h2>
-      <div id="empty" class="empty">Fill the form and press <b>Estimate risk</b>.</div>
+      <div id="empty" class="empty">Fill the form (or import a CSV) and press
+        <b>Estimate risk</b>.</div>
       <div id="result" style="display:none">
         <div class="headline"><span class="big" id="big">–</span>
           <span class="lbl">within 5 years<br><span id="modelbadge"></span></span></div>
@@ -151,10 +96,10 @@
 
   <div class="disc">
     ⚠️ Research / education demo — <b>not a medical device</b>. Trained on the US
-    OAI cohort; transportability to other health systems is unvalidated. The
-    outcome is <b>total</b> knee replacement (626 events in 4,610 patients).
-    Predictions run on a local server standing in for a hospital's own machine —
-    the entered data is not sent to any third party.
+    OAI cohort; transportability to other health systems is unvalidated. Outcome =
+    <b>total</b> knee replacement (626 events in 4,610 patients). Predictions run
+    on a local server standing in for a hospital's own machine — the entered data
+    is not sent to any third party.
   </div>
 </div>
 
@@ -163,97 +108,164 @@ const $ = s => document.querySelector(s);
 let MODE = "clinical";
 const apiBase = () => $("#api").value.replace(/\/+$/,"");
 
-// medial/lateral JSW inputs map to the model's per-location JSW features
-const MEDIAL_JSW = ["V00MCMJSW_worse","V00JSW150_worse","V00JSW200_worse","V00JSW250_worse","V00JSW300_worse"];
-const LATERAL_JSW = ["V00LJSW750_worse","V00LJSW850_worse"];
+// ---- feature spec: every model input, grouped. `img:true` = only used by the X-ray model.
+const OPT = (pairs)=>pairs;                       // [[value,label],...]
+const FIELDS = [
+  // Demographics
+  {n:"V00AGE",l:"Age (years)",g:"Demographics",num:[40,90,1],d:64},
+  {n:"P02SEX",l:"Sex",g:"Demographics",opt:OPT([[2,"Female"],[1,"Male"]]),d:2},
+  {n:"P02RACE",l:"Race",g:"Demographics",opt:OPT([[1,"White"],[2,"Black / African-American"],[3,"Asian"],[0,"Other / unknown"]]),d:1},
+  {n:"P02HISP",l:"Hispanic / Latino",g:"Demographics",opt:OPT([[0,"No"],[1,"Yes"]]),d:0},
+  {n:"P01BMI",l:"BMI",g:"Demographics",num:[16,50,0.1],d:29},
+  {n:"P01HEIGHT",l:"Height (mm)",g:"Demographics",num:[1400,2000,0.5],d:1674},
+  {n:"P01WEIGHT",l:"Weight (kg)",g:"Demographics",num:[40,160,0.1],d:80},
+  {n:"V00SMOKER",l:"Smoking",g:"Demographics",opt:OPT([[0,"Never"],[1,"Current"],[2,"Former"],[3,"Other"]]),d:0},
+  {n:"V00COHORT",l:"OAI subcohort",g:"Demographics",opt:OPT([[2,"Incidence"],[1,"Progression"],[3,"Control"]]),d:2},
+  {n:"V00COMORB",l:"Comorbidity count",g:"Demographics",num:[0,10,1],d:0},
+  // Symptoms & health
+  {n:"V00WOMKP_worse",l:"WOMAC pain (0–20)",g:"Symptoms & health",num:[0,20,1],d:6},
+  {n:"V00WOMSTF_worse",l:"WOMAC stiffness (0–8)",g:"Symptoms & health",num:[0,8,1],d:2},
+  {n:"V00WOMADL_worse",l:"WOMAC function/ADL (0–68)",g:"Symptoms & health",num:[0,68,1],d:20},
+  {n:"V00WOMTS_worse",l:"WOMAC total (0–96)",g:"Symptoms & health",num:[0,96,1],d:28},
+  {n:"V00KOOSKP_worse",l:"KOOS pain (0–100)",g:"Symptoms & health",num:[0,100,1],d:75},
+  {n:"V00KOOSQOL",l:"KOOS quality of life (0–100)",g:"Symptoms & health",num:[0,100,1],d:55},
+  {n:"V00KOOSFSR",l:"KOOS sport/recreation (0–100)",g:"Symptoms & health",num:[0,100,1],d:70},
+  {n:"V00HSPSS",l:"SF-12 physical (PCS)",g:"Symptoms & health",num:[10,70,0.1],d:45},
+  {n:"V00HSMSS",l:"SF-12 mental (MCS)",g:"Symptoms & health",num:[10,70,0.1],d:53},
+  {n:"P01RKSX_worse",l:"Symptomatic knee (0–2)",g:"Symptoms & health",num:[0,2,1],d:1},
+  // X-ray — OARSI semi-quant grades
+  {n:"V00XRKL_worse",l:"Kellgren–Lawrence (0–4)",g:"X-ray — OARSI grades",img:1,grade:4,d:2},
+  {n:"V00XRJSM_worse",l:"JSN medial (0–3)",g:"X-ray — OARSI grades",img:1,grade:3,d:1},
+  {n:"V00XRJSL_worse",l:"JSN lateral (0–3)",g:"X-ray — OARSI grades",img:1,grade:3,d:0},
+  {n:"V00XROSFM_worse",l:"Osteophyte femur-med (0–3)",g:"X-ray — OARSI grades",img:1,grade:3,d:1},
+  {n:"V00XROSTM_worse",l:"Osteophyte tibia-med (0–3)",g:"X-ray — OARSI grades",img:1,grade:3,d:1},
+  {n:"V00XROSFL_worse",l:"Osteophyte femur-lat (0–3)",g:"X-ray — OARSI grades",img:1,grade:3,d:1},
+  {n:"V00XROSTL_worse",l:"Osteophyte tibia-lat (0–3)",g:"X-ray — OARSI grades",img:1,grade:3,d:1},
+  {n:"V00XRSCFM_worse",l:"Sclerosis femur-med (0–3)",g:"X-ray — OARSI grades",img:1,grade:3,d:0},
+  {n:"V00XRSCTM_worse",l:"Sclerosis tibia-med (0–3)",g:"X-ray — OARSI grades",img:1,grade:3,d:0},
+  {n:"V00XRSCFL_worse",l:"Sclerosis femur-lat (0–2)",g:"X-ray — OARSI grades",img:1,grade:2,d:0},
+  {n:"V00XRSCTL_worse",l:"Sclerosis tibia-lat (0–2)",g:"X-ray — OARSI grades",img:1,grade:2,d:0},
+  {n:"V00XRCHM_worse",l:"Chondrocalcinosis med (0–1)",g:"X-ray — OARSI grades",img:1,grade:1,d:0},
+  {n:"V00XRCHL_worse",l:"Chondrocalcinosis lat (0–1)",g:"X-ray — OARSI grades",img:1,grade:1,d:0},
+  {n:"V00XRCYTM_worse",l:"Cyst tibia-med (0–1)",g:"X-ray — OARSI grades",img:1,grade:1,d:0},
+  // X-ray — joint-space width (mm)
+  {n:"V00MCMJSW_worse",l:"Min medial JSW",g:"X-ray — joint-space width (mm)",img:1,num:[0,8,0.1],d:3.9},
+  {n:"V00JSW150_worse",l:"Medial JSW @1.5",g:"X-ray — joint-space width (mm)",img:1,num:[0,9,0.1],d:4.4},
+  {n:"V00JSW200_worse",l:"Medial JSW @2.0",g:"X-ray — joint-space width (mm)",img:1,num:[0,9,0.1],d:4.7},
+  {n:"V00JSW250_worse",l:"Medial JSW @2.5",g:"X-ray — joint-space width (mm)",img:1,num:[0,9,0.1],d:5.3},
+  {n:"V00JSW300_worse",l:"Medial JSW @3.0",g:"X-ray — joint-space width (mm)",img:1,num:[0,10,0.1],d:6.3},
+  {n:"V00LJSW750_worse",l:"Lateral JSW @7.5",g:"X-ray — joint-space width (mm)",img:1,num:[0,11,0.1],d:7.0},
+  {n:"V00LJSW850_worse",l:"Lateral JSW @8.5",g:"X-ray — joint-space width (mm)",img:1,num:[0,10,0.1],d:5.9},
+];
 
-// fill each OARSI grade <select> with 0..max, default = a moderate knee
-const GRADE_DEFAULT = {V00XRKL_worse:2, V00XRJSM_worse:1, V00XROSFM_worse:1,
-  V00XROSTM_worse:1, V00XROSFL_worse:1, V00XROSTL_worse:1};
-document.querySelectorAll('#xrayFields select[data-max]').forEach(sel=>{
-  const max = +sel.dataset.max, def = GRADE_DEFAULT[sel.name] ?? 0;
-  for(let i=0;i<=max;i++){
-    const o=document.createElement('option'); o.value=i; o.textContent=i;
-    if(i===def) o.selected=true; sel.appendChild(o);
+// ---- render the form grouped, remembering group order
+const form = $("#form"); const groups = {};
+FIELDS.forEach(f=>{
+  if(!groups[f.g]){
+    const tag=document.createElement('div'); tag.className='sect-tag'+(f.img?' imaging':'');
+    tag.textContent=f.g; form.appendChild(tag);
+    const grid=document.createElement('div'); grid.className='fgrid'+(f.img?' imaging':'');
+    grid.dataset.group=f.g; form.appendChild(grid);
+    groups[f.g]=grid;
   }
+  const wrap=document.createElement('div'); wrap.className='field';
+  const id='f_'+f.n;
+  let ctrl;
+  if(f.opt){ ctrl=`<select id="${id}" name="${f.n}">`+f.opt.map(([v,t])=>`<option value="${v}"${v==f.d?' selected':''}>${t}</option>`).join('')+`</select>`; }
+  else if(f.grade!=null){ let o=''; for(let i=0;i<=f.grade;i++)o+=`<option value="${i}"${i==f.d?' selected':''}>${i}</option>`; ctrl=`<select id="${id}" name="${f.n}">${o}</select>`; }
+  else { const[mn,mx,st]=f.num; ctrl=`<input id="${id}" name="${f.n}" type="number" min="${mn}" max="${mx}" step="${st}" value="${f.d}">`; }
+  wrap.innerHTML=`<label for="${id}">${f.l}</label>${ctrl}`;
+  groups[f.g].appendChild(wrap);
 });
 
-async function ping(){
-  try{ const h=await (await fetch(apiBase()+"/health")).json();
-    $("#dot").className = "dot up"; return h; }
-  catch(e){ $("#dot").className = "dot down"; }
+function applyMode(){
+  document.querySelectorAll('.imaging').forEach(el=>el.classList.toggle('hide', MODE!=="radiographic"));
 }
-ping();
-$("#api").addEventListener("change", ping);
-
-$("#toggle").addEventListener("click", e=>{
-  const b = e.target.closest("button"); if(!b) return;
-  MODE = b.dataset.mode;
-  [...$("#toggle").children].forEach(x=>x.classList.toggle("on", x===b));
-  $("#xrayFields").style.display = MODE==="radiographic" ? "block" : "none";
+$("#toggle").addEventListener("click",e=>{
+  const b=e.target.closest("button"); if(!b)return;
+  MODE=b.dataset.mode;
+  [...$("#toggle").children].forEach(x=>x.classList.toggle("on",x===b));
+  applyMode();
 });
+applyMode();
 
-$("#form").addEventListener("submit", async e=>{
-  e.preventDefault();
-  $("#err").textContent = "";
-  const fd = new FormData(e.target);
-  const features = {};
-  for(const [k,v] of fd.entries()){
-    if(k==="medialJSW"||k==="lateralJSW") continue;      // handled below
-    if(v!=="" && v!=null) features[k] = Number(v);
-  }
-  if(MODE==="radiographic"){
-    const med = Number(fd.get("medialJSW")), lat = Number(fd.get("lateralJSW"));
-    if(med) MEDIAL_JSW.forEach(k=>features[k]=med);
-    if(lat) LATERAL_JSW.forEach(k=>features[k]=lat);
+// ---- server health dot
+async function ping(){ try{ await fetch(apiBase()+"/health"); $("#dot").className="dot up"; }catch(e){ $("#dot").className="dot down"; } }
+ping(); $("#api").addEventListener("change",ping);
+
+// ---- CSV import / template
+$("#templateBtn").addEventListener("click",()=>{
+  const names=FIELDS.map(f=>f.n), vals=FIELDS.map(f=>document.getElementById('f_'+f.n).value);
+  const csv=names.join(",")+"\n"+vals.join(",")+"\n";
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));
+  a.download="kneecast_patient.csv"; a.click();
+});
+$("#importBtn").addEventListener("click",()=>$("#csvFile").click());
+$("#csvFile").addEventListener("change",ev=>{
+  const file=ev.target.files[0]; if(!file)return;
+  const r=new FileReader();
+  r.onload=()=>{ fillFromCSV(r.result); ev.target.value=""; };
+  r.readAsText(file);
+});
+function setField(name,value){
+  const el=document.getElementById('f_'+name); if(!el||value===""||value==null)return;
+  el.value=String(value).trim();
+}
+function fillFromCSV(text){
+  const rows=text.trim().split(/\r?\n/).map(l=>l.split(","));
+  let filled=0;
+  const known=new Set(FIELDS.map(f=>f.n));
+  if(rows.length>=2 && rows[0].some(c=>known.has(c.trim()))){
+    // wide: header row + value row(s)
+    const hdr=rows[0].map(c=>c.trim());
+    hdr.forEach((h,i)=>{ if(known.has(h)){ setField(h,rows[1][i]); filled++; } });
   }else{
-    // clinical mode: drop every imaging feature so nothing radiographic leaks in
-    for(const k of Object.keys(features))
-      if(k.startsWith("V00XR")||k.includes("JSW")) delete features[k];
+    // key,value per line
+    rows.forEach(([k,v])=>{ if(k&&known.has(k.trim())){ setField(k.trim(),v); filled++; } });
   }
+  $("#err").textContent = filled? "" : "No matching feature columns found in that CSV.";
+}
+
+// ---- predict
+$("#submitBtn").addEventListener("click",async ()=>{
+  $("#err").textContent="";
+  const features={};
+  FIELDS.forEach(f=>{ const v=document.getElementById('f_'+f.n).value; if(v!=="") features[f.n]=Number(v); });
+  if(MODE==="radiographic") features["has_imaging"]=1;
   try{
-    const r = await fetch(`${apiBase()}/predict?mode=${MODE}`,{
-      method:"POST", headers:{"Content-Type":"application/json"},
-      body: JSON.stringify({features})
-    });
+    const r=await fetch(`${apiBase()}/predict?mode=${MODE}`,{method:"POST",
+      headers:{"Content-Type":"application/json"},body:JSON.stringify({features})});
     if(!r.ok) throw new Error(await r.text());
     render(await r.json());
   }catch(err){
-    $("#err").textContent = "Could not reach the model server. Start it with "
-      + "`uvicorn app:app --port 8000` in backend/. ("+err.message+")";
+    $("#err").textContent="Could not reach the model server. Start it with "
+      +"`uvicorn app:app --port 8000` in backend/. ("+err.message+")";
   }
 });
 
 function render(res){
-  $("#empty").style.display="none";
-  $("#result").style.display="block";
-  $("#big").textContent = Math.round(res.risk_5y*100)+"%";
-  $("#modelbadge").textContent = res.mode==="radiographic" ? "clinical + X-ray model" : "clinical model";
-  $("#years").innerHTML = Object.entries(res.risk_by_year).map(([y,v])=>
+  $("#empty").style.display="none"; $("#result").style.display="block";
+  $("#big").textContent=Math.round(res.risk_5y*100)+"%";
+  $("#modelbadge").textContent=res.mode==="radiographic"?"clinical + X-ray model":"clinical model";
+  $("#years").innerHTML=Object.entries(res.risk_by_year).map(([y,v])=>
     `<div><b>${Math.round(v*100)}%</b><span>${y} yr</span></div>`).join("");
   drawChart(res.curve);
-  const n = res.used_defaults_for.length;
-  $("#note").textContent = n ? `${n} unfilled field(s) set to the cohort average.` : "";
+  $("#note").textContent="";
 }
-
 function drawChart(curve){
-  const W=360,H=200,pl=34,pr=12,pt=12,pb=26, last=curve[curve.length-1];
-  const x = d => pl + (d/last.days)*(W-pl-pr);
-  const maxR = Math.max(0.1, ...curve.map(c=>c.risk));
-  const y = r => pt + (1 - r/maxR)*(H-pt-pb);
-  const line = curve.map((c,i)=>(i?"L":"M")+x(c.days).toFixed(1)+" "+y(c.risk).toFixed(1)).join(" ");
-  const area = `M${pl} ${H-pb} `+curve.map(c=>"L"+x(c.days).toFixed(1)+" "+y(c.risk).toFixed(1)).join(" ")+` L${W-pr} ${H-pb} Z`;
+  const W=360,H=200,pl=34,pr=12,pt=12,pb=26,last=curve[curve.length-1];
+  const x=d=>pl+(d/last.days)*(W-pl-pr);
+  const maxR=Math.max(0.1,...curve.map(c=>c.risk));
+  const y=r=>pt+(1-r/maxR)*(H-pt-pb);
+  const line=curve.map((c,i)=>(i?"L":"M")+x(c.days).toFixed(1)+" "+y(c.risk).toFixed(1)).join(" ");
+  const area=`M${pl} ${H-pb} `+curve.map(c=>"L"+x(c.days).toFixed(1)+" "+y(c.risk).toFixed(1)).join(" ")+` L${W-pr} ${H-pb} Z`;
   let g="";
   for(let yr=1;yr<=5;yr++){const xx=x(yr*365.25);
-    g+=`<line x1="${xx}" y1="${pt}" x2="${xx}" y2="${H-pb}" stroke="#eee"/>`+
-       `<text x="${xx}" y="${H-8}" font-size="10" fill="#999" text-anchor="middle">${yr}y</text>`;}
-  for(let k=0;k<=2;k++){const rr=maxR*k/2, yy=y(rr);
-    g+=`<line x1="${pl}" y1="${yy}" x2="${W-pr}" y2="${yy}" stroke="#f2f2f2"/>`+
-       `<text x="${pl-5}" y="${yy+3}" font-size="10" fill="#999" text-anchor="end">${Math.round(rr*100)}%</text>`;}
-  $("#chart").innerHTML = g +
-    `<path d="${area}" fill="#e8663b" opacity="0.10"/>`+
-    `<path d="${line}" fill="none" stroke="#e8663b" stroke-width="2.2"/>`+
-    `<circle cx="${x(last.days).toFixed(1)}" cy="${y(last.risk).toFixed(1)}" r="3.6" fill="#e8663b"/>`;
+    g+=`<line x1="${xx}" y1="${pt}" x2="${xx}" y2="${H-pb}" stroke="#eee"/><text x="${xx}" y="${H-8}" font-size="10" fill="#999" text-anchor="middle">${yr}y</text>`;}
+  for(let k=0;k<=2;k++){const rr=maxR*k/2,yy=y(rr);
+    g+=`<line x1="${pl}" y1="${yy}" x2="${W-pr}" y2="${yy}" stroke="#f2f2f2"/><text x="${pl-5}" y="${yy+3}" font-size="10" fill="#999" text-anchor="end">${Math.round(rr*100)}%</text>`;}
+  $("#chart").innerHTML=g+`<path d="${area}" fill="#e8663b" opacity="0.10"/><path d="${line}" fill="none" stroke="#e8663b" stroke-width="2.2"/><circle cx="${x(last.days).toFixed(1)}" cy="${y(last.risk).toFixed(1)}" r="3.6" fill="#e8663b"/>`;
 }
 </script>
 </body>
