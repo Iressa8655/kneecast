@@ -79,8 +79,7 @@
   <header>
     <a class="back" href="index.html">← KneeCast</a>
     <h1>Try the model</h1>
-    <p>A two-step triage aid for the GP — it <b>ranks</b>, it does not diagnose.
-      Switch stages with the toggle below.</p>
+    <p>A two-step triage aid for the GP — it <b>ranks</b>, it does not diagnose.</p>
     <div class="pathway">
       <div class="step">
         <span class="badge">Stage 1</span>
@@ -144,29 +143,19 @@
   </div>
 
   <div class="explain">
-    <div><h3>Two stages</h3><p><b>Stage 1 (clinical only)</b> asks whether the knee
-      warrants an X-ray. <b>Stage 2 (＋ the X-ray)</b> asks whether to refer to an
-      OA specialist to discuss surgery. Each uses its own survival model.</p></div>
-    <div><h3>5-year risk</h3><p>The chance this patient reaches a <b>total</b> knee
-      replacement within 5 years. The chips and curve show it building up year by
-      year.</p></div>
-    <div><h3>Expected time to surgery</h3><p>The <b>median</b> time to replacement —
-      the year cumulative risk reaches 50 %. Shown as “beyond ~16 years” when the
-      risk never reaches 50 % (surgery unlikely).</p></div>
-    <div><h3>Green / amber / red</h3><p>Green = conservative care <b>with review</b>
-      (not discharge); amber/red escalate. Both cut-offs sit at the balanced
-      (Youden) point, so few true cases are missed. <b>Illustrative</b> thresholds —
-      validate and set them with a clinician before any real use.</p></div>
+    <div><h3>Two stages</h3><p>Stage 1 (clinical) → X-ray this knee? Stage 2 (＋ X-ray)
+      → refer to discuss surgery? A separate model each.</p></div>
+    <div><h3>5-year risk</h3><p>Chance of a <b>total</b> knee replacement within 5 years.</p></div>
+    <div><h3>Expected time to surgery</h3><p><b>Median</b> time to replacement — when
+      risk reaches 50 %; “beyond ~16 y” if it never does.</p></div>
+    <div><h3>Green / amber / red</h3><p>Green = conservative + review; amber/red
+      escalate. <b>Illustrative</b> thresholds — set them with a clinician.</p></div>
   </div>
 
   <div class="disc">
-    ⚠️ Research / education demo — <b>not a medical device</b>. Trained on the US
-    OAI cohort; transportability to other health systems is unvalidated. Outcome =
-    <b>total</b> knee replacement (626 events in 4,610 patients). Predictions run
-    on a local server standing in for a hospital's own machine — the entered data
-    is not sent to any third party. The referral thresholds (green / amber / red)
-    are <b>illustrative placeholders</b> from the cohort risk distribution, to be
-    set with a clinician and a decision-curve / cost analysis before any real use.
+    ⚠️ Research / education demo — <b>not a medical device</b>. Trained on US OAI
+    data (transportability unvalidated). Runs on a local server — the entered data
+    is not sent to any third party.
   </div>
 </div>
 
