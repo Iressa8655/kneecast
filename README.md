@@ -38,7 +38,7 @@ demo can't reach your `localhost`, so run it locally for a live demo.
 ## Model
 
 A penalised Cox survival model trained on the OAI cohort via the Track A data
-pipeline (see the [oai repo](https://github.com/OuyangXiaotong/oai-knee-tkr-pipeline)).
+pipeline (see the [oai repo](https://github.com/OuyangXiaotong/oai-summer-school-umcg)).
 Outcome = total knee replacement (626 events). The trained model
 (`backend/model.joblib`) is **git-ignored** — it is derived from access-restricted
 OAI data and this repo is public; build it locally with `train_model.py`.
