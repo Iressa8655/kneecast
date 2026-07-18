@@ -11,6 +11,7 @@ third party.
 | --- | --- |
 | `app.py` | the API (`/health`, `/meta`, `/predict`) |
 | `train_model.py` | fits + freezes the model(s) → `model.joblib` + `meta.json` |
+| [`VALIDATION.md`](VALIDATION.md) | internal 5-fold cross-validation results (C-index, triage sensitivity/specificity) |
 | `model.joblib` | the frozen CoxNet models (clinical + radiographic) |
 | `meta.json` | per-mode feature list + ranges (drives the web form) |
 

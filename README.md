@@ -43,6 +43,10 @@ Outcome = total knee replacement (626 events). The trained model
 (`backend/model.joblib`) is **git-ignored** — it is derived from access-restricted
 OAI data and this repo is public; build it locally with `train_model.py`.
 
+Internal 5-fold cross-validation (Harrell C 0.77 clinical / 0.84 with X-ray, plus
+the triage sensitivity/specificity) is in
+[`backend/VALIDATION.md`](backend/VALIDATION.md).
+
 ## Deploy
 
 Published with GitHub Pages from `main` / root.
