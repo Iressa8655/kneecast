@@ -224,10 +224,8 @@ applyMode();
 $("#exampleSel").addEventListener("change",e=>{
   const key=e.target.value; if(!key||!EXAMPLES[key]) return;
   Object.entries(EXAMPLES[key]).forEach(([k,v])=>setField(k,v));
-  MODE="radiographic";           // examples include the X-ray
-  [...$("#toggle").children].forEach(x=>x.classList.toggle("on",x.dataset.mode===MODE));
-  applyMode();
-  $("#submitBtn").click();        // predict straight away
+  // fill the fields but stay on the current stage (start clinical, toggle to X-ray)
+  $("#submitBtn").click();        // predict in the current stage
   e.target.selectedIndex=0;       // reset back to "Load example ▾"
 });
 
