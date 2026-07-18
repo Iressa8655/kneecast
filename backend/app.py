@@ -42,21 +42,27 @@ CURVE_DAYS = np.linspace(0, int(365.25 * 5), 61)   # 0..5y, ~monthly
 # cohort risk distribution (X-ray = low bar / high sensitivity; surgery referral
 # = high bar). ⚠️ ILLUSTRATIVE placeholders — set with the clinical mentor and a
 # decision-curve / cost-effectiveness analysis before any real use.
+# Both boundaries sit at the Youden-optimal ~5% (best sensitivity/specificity
+# balance the models give) rather than an aggressive cut — so neither stage
+# misses many true cases. "green" is conservative care WITH review, not
+# discharge. Stage 2: anyone amber-or-above is referred, so surgery-bound
+# patients reach the specialist. ⚠️ In-sample thresholds — validate out-of-fold
+# and with a clinician before real use.
 TRIAGE = {
-    "clinical": {            # stage 1: does this knee warrant an X-ray?
+    "clinical": {            # stage 1 — X-ray?  (Youden ~5%: sens 77%, spec 74%)
         "question": "Should this knee be X-rayed?",
         "bands": [
-            (0.04, "green", "X-ray not indicated yet — conservative care, review in ~12 months"),
-            (0.08, "amber", "Consider a weight-bearing knee X-ray"),
+            (0.05, "green", "Conservative care + review in ~12 months — no X-ray yet"),
+            (0.10, "amber", "Consider a knee X-ray (clinical judgement)"),
             (2.00, "red",   "Refer for a weight-bearing knee X-ray"),
         ],
     },
-    "radiographic": {        # stage 2: refer to an OA specialist for surgery?
+    "radiographic": {        # stage 2 — specialist?  (green 5%: sens 88%, spec 76%)
         "question": "Refer to an OA specialist to discuss surgery?",
         "bands": [
-            (0.05, "green", "Continue conservative care (physio, weight, analgesia); re-review later"),
-            (0.20, "amber", "Routine OA-specialist referral — shared decision-making"),
-            (2.00, "red",   "Priority OA-specialist referral — discuss surgery"),
+            (0.05, "green", "Continue conservative care; re-review later"),
+            (0.20, "amber", "Refer to OA specialist — routine / shared decision"),
+            (2.00, "red",   "Refer to OA specialist — priority, discuss surgery"),
         ],
     },
 }
