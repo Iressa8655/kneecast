@@ -14,6 +14,14 @@
   header h1{font-family:var(--serif);font-weight:600;font-size:clamp(26px,4vw,38px);margin:0 0 4px}
   header p{color:var(--muted);margin:0 0 6px}
   a.back{color:var(--accent2);text-decoration:none;font-size:13px}
+  .pathway{display:flex;align-items:stretch;gap:10px;margin:14px 0 2px;flex-wrap:wrap}
+  .pathway .step{flex:1;min-width:210px;border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--card)}
+  .pathway .step .badge{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.03em;
+    padding:2px 8px;border-radius:99px;background:#f0eef4;color:var(--accent2)}
+  .pathway .step .inp{font-size:12px;color:var(--muted);margin:7px 0 2px}
+  .pathway .step .q{font-size:15px;font-weight:600;color:var(--ink)}
+  .pathway .arrow{align-self:center;color:#c9c7d4;font-size:22px}
+  @media(max-width:560px){.pathway .arrow{transform:rotate(90deg)}}
   .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:18px}
   .toggle{display:inline-flex;background:#f0eef4;border-radius:10px;padding:3px}
   .toggle button{border:0;background:none;padding:8px 14px;border-radius:8px;font-size:13px;cursor:pointer;color:var(--muted)}
@@ -68,12 +76,21 @@
   <header>
     <a class="back" href="index.html">← KneeCast</a>
     <h1>Try the model</h1>
-    <p>A two-step tool for the GP. <b>Stage 1 — clinical only:</b> from the data a
-      GP already has, does this knee warrant an <b>X-ray</b>? <b>Stage 2 — with the
-      X-ray:</b> should the patient be referred to an <b>OA specialist to discuss
-      surgery</b>? Each stage uses its own survival model and returns a risk, a
-      recommendation, and the expected time to a <b>total knee replacement</b>.
-      A triage aid, not a diagnosis. Switch stages with the toggle below.</p>
+    <p>A two-step triage aid for the GP — it <b>ranks</b>, it does not diagnose.
+      Switch stages with the toggle below.</p>
+    <div class="pathway">
+      <div class="step">
+        <span class="badge">Stage 1</span>
+        <div class="inp">Clinical data only</div>
+        <div class="q">X-ray this knee?</div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="step">
+        <span class="badge">Stage 2</span>
+        <div class="inp">＋ the X-ray</div>
+        <div class="q">Refer to discuss surgery?</div>
+      </div>
+    </div>
   </header>
 
   <div class="toolbar">
