@@ -64,6 +64,9 @@
   .note{font-size:12px;color:var(--muted);margin-top:12px}
   .empty{color:#b0aebe;text-align:center;padding:44px 0;font-size:14px}
   .err{color:var(--accent);font-size:13px;margin-top:10px;min-height:1em}
+  .explain{margin-top:38px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px 26px}
+  .explain h3{font-size:13px;margin:0 0 5px;color:var(--ink)}
+  .explain p{font-size:12.5px;color:var(--muted);margin:0;line-height:1.55}
   .disc{margin-top:26px;font-size:12px;color:#a2a0b0;border-top:1px solid var(--line);padding-top:14px}
   .apibar{font-size:12px;color:var(--muted);margin-top:12px;display:flex;align-items:center;gap:6px}
   .apibar input{border:1px solid var(--line);border-radius:7px;padding:4px 7px;font:inherit;flex:1}
@@ -130,13 +133,28 @@
       <div id="result" style="display:none">
         <div class="triage" id="triage"></div>
         <div class="headline"><span class="big" id="big">–</span>
-          <span class="lbl">within 5 years<br><span id="modelbadge"></span></span></div>
+          <span class="lbl">within 5 years</span></div>
         <div class="years" id="years"></div>
         <svg class="chart" viewBox="0 0 360 200" id="chart" role="img" aria-label="Cumulative risk curve"></svg>
         <div class="eta" id="eta"></div>
         <div class="note" id="note"></div>
       </div>
     </div>
+  </div>
+
+  <div class="explain">
+    <div><h3>Two stages</h3><p><b>Stage 1 (clinical only)</b> asks whether the knee
+      warrants an X-ray. <b>Stage 2 (＋ the X-ray)</b> asks whether to refer to an
+      OA specialist to discuss surgery. Each uses its own survival model.</p></div>
+    <div><h3>5-year risk</h3><p>The chance this patient reaches a <b>total</b> knee
+      replacement within 5 years. The chips and curve show it building up year by
+      year.</p></div>
+    <div><h3>Expected time to surgery</h3><p>The <b>median</b> time to replacement —
+      the year cumulative risk reaches 50 %. Shown as “beyond ~16 years” when the
+      risk never reaches 50 % (surgery unlikely).</p></div>
+    <div><h3>Green / amber / red</h3><p>The referral recommendation. Thresholds are
+      <b>illustrative placeholders</b> from the cohort risk distribution — set them
+      with a clinician before any real use.</p></div>
   </div>
 
   <div class="disc">
@@ -311,16 +329,13 @@ function render(res){
     ? `<div class="q">${res.mode==="radiographic"?"Stage 2 · GP + X-ray":"Stage 1 · GP, clinical only"} — ${t.question}</div><div class="a">${t.action}</div>`
     : "";
   $("#big").textContent=Math.round(res.risk_5y*100)+"%";
-  $("#modelbadge").textContent=res.mode==="radiographic"?"clinical + X-ray model":"clinical model";
   $("#years").innerHTML=Object.entries(res.risk_by_year).map(([y,v])=>
     `<div><b>${Math.round(v*100)}%</b><span>${y} yr</span></div>`).join("");
   drawChart(res.curve);
   const et=res.expected_time_years;
   $("#eta").innerHTML = et!=null
     ? `<div class="k">Expected time to surgery</div><div class="v">≈ ${et} years</div>`
-      +`<div class="sub">median — when cumulative risk reaches 50%</div>`
-    : `<div class="k">Expected time to surgery</div><div class="v soft">beyond ${res.horizon_years} years</div>`
-      +`<div class="sub">risk stays under 50% — replacement unlikely within the modelled follow-up</div>`;
+    : `<div class="k">Expected time to surgery</div><div class="v soft">beyond ${res.horizon_years} years</div>`;
   $("#note").textContent="";
 }
 function drawChart(curve){
