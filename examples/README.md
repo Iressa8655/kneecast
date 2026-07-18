@@ -10,7 +10,8 @@ The demo is a **two-stage GP triage**:
 
 | File | Stage 1 (X-ray?) | Stage 2 (specialist?) | Expected time to surgery |
 | --- | --- | --- | --- |
-| `example_healthy.csv` | 🟢 no imaging | 🟢 conservative | > 16 y |
+| `example_healthy.csv` | 🟢 no X-ray | 🟢 conservative | > 16 y |
+| `example_mild_moderate_oa.csv` | 🟡 consider X-ray | 🟢 conservative | > 16 y |
 | `example_moderate_oa.csv` | 🔴 X-ray | 🟡 routine referral | > 16 y |
 | `example_no_surgery_within_10y.csv` | 🔴 X-ray | 🟡 routine referral | ≈ 14 y |
 | `example_surgery_within_10y.csv` | 🔴 X-ray | 🔴 discuss surgery | ≈ 10 y |
