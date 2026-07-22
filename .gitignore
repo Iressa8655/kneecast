@@ -13,3 +13,7 @@ __pycache__/
 # them in this PUBLIC repo. Build locally with backend/train_model.py.
 backend/model.joblib
 backend/meta.json
+
+# staging folder for sharing the model with the team (Google Drive) — contains
+# model.joblib, must never be committed to this public repo
+share-bundle/
