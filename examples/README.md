@@ -24,6 +24,17 @@ X-ray" (red), but with the X-ray the risk is only moderate (amber → routine, n
 urgent). "Expected time to surgery" is the median time-to-event (when cumulative
 risk reaches 50 %).
 
+## For a static site
+
+`precomputed_results.json` holds the **model's actual output** for all eight
+patients in both stages — 5-year risk, per-year risks, triage band + action,
+expected time to surgery, and the curve points. Drop it into a static page (e.g.
+the Lovable site) to show real example results without running the server.
+
+These are genuine model outputs on **synthetic** patients, so label them
+"example output from our trained model", not "live" and not "illustrative
+figures from the literature".
+
 **Why no 1–3 year examples?** Even the most severe knee has a ~4-year median;
 total knee replacement within 1–3 years of baseline is rare in OAI, so the data
 does not support that prediction.

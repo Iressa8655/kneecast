@@ -1,0 +1,4222 @@
+{
+  "_about": "Pre-computed output of the KneeCast CoxNet models on SYNTHETIC example patients (no real patient data). Generated from the local model server; safe to hard-code in a static site.",
+  "_outcome": "total knee replacement",
+  "patients": [
+    {
+      "name": "Healthy knee (no OA)",
+      "stage1_clinical": {
+        "risk_5y": 0.0167,
+        "risk_by_year": {
+          "1": 0.0017,
+          "2": 0.0046,
+          "3": 0.0077,
+          "4": 0.0122,
+          "5": 0.0167
+        },
+        "expected_time_years": null,
+        "triage": {
+          "band": "green",
+          "action": "Conservative care + review in ~12 months \u2014 no X-ray yet",
+          "question": "Should this knee be X-rayed?"
+        },
+        "curve": [
+          {
+            "days": 0,
+            "risk": 0.0001
+          },
+          {
+            "days": 30,
+            "risk": 0.0001
+          },
+          {
+            "days": 60,
+            "risk": 0.0001
+          },
+          {
+            "days": 91,
+            "risk": 0.0001
+          },
+          {
+            "days": 121,
+            "risk": 0.0001
+          },
+          {
+            "days": 152,
+            "risk": 0.0004
+          },
+          {
+            "days": 182,
+            "risk": 0.0006
+          },
+          {
+            "days": 213,
+            "risk": 0.0008
+          },
+          {
+            "days": 243,
+            "risk": 0.0008
+          },
+          {
+            "days": 273,
+            "risk": 0.0011
+          },
+          {
+            "days": 304,
+            "risk": 0.0013
+          },
+          {
+            "days": 334,
+            "risk": 0.0015
+          },
+          {
+            "days": 365,
+            "risk": 0.0017
+          },
+          {
+            "days": 395,
+            "risk": 0.002
+          },
+          {
+            "days": 426,
+            "risk": 0.0021
+          },
+          {
+            "days": 456,
+            "risk": 0.0022
+          },
+          {
+            "days": 486,
+            "risk": 0.0025
+          },
+          {
+            "days": 517,
+            "risk": 0.0029
+          },
+          {
+            "days": 547,
+            "risk": 0.0032
+          },
+          {
+            "days": 578,
+            "risk": 0.0036
+          },
+          {
+            "days": 608,
+            "risk": 0.0037
+          },
+          {
+            "days": 639,
+            "risk": 0.0039
+          },
+          {
+            "days": 669,
+            "risk": 0.0041
+          },
+          {
+            "days": 699,
+            "risk": 0.0042
+          },
+          {
+            "days": 730,
+            "risk": 0.0046
+          },
+          {
+            "days": 760,
+            "risk": 0.0047
+          },
+          {
+            "days": 791,
+            "risk": 0.0052
+          },
+          {
+            "days": 821,
+            "risk": 0.0056
+          },
+          {
+            "days": 852,
+            "risk": 0.0059
+          },
+          {
+            "days": 882,
+            "risk": 0.006
+          },
+          {
+            "days": 913,
+            "risk": 0.0063
+          },
+          {
+            "days": 943,
+            "risk": 0.0067
+          },
+          {
+            "days": 973,
+            "risk": 0.0068
+          },
+          {
+            "days": 1004,
+            "risk": 0.0073
+          },
+          {
+            "days": 1034,
+            "risk": 0.0074
+          },
+          {
+            "days": 1065,
+            "risk": 0.0075
+          },
+          {
+            "days": 1095,
+            "risk": 0.0077
+          },
+          {
+            "days": 1126,
+            "risk": 0.008
+          },
+          {
+            "days": 1156,
+            "risk": 0.0082
+          },
+          {
+            "days": 1186,
+            "risk": 0.0087
+          },
+          {
+            "days": 1217,
+            "risk": 0.0091
+          },
+          {
+            "days": 1247,
+            "risk": 0.0097
+          },
+          {
+            "days": 1278,
+            "risk": 0.0101
+          },
+          {
+            "days": 1308,
+            "risk": 0.0104
+          },
+          {
+            "days": 1339,
+            "risk": 0.0105
+          },
+          {
+            "days": 1369,
+            "risk": 0.0112
+          },
+          {
+            "days": 1399,
+            "risk": 0.0118
+          },
+          {
+            "days": 1430,
+            "risk": 0.012
+          },
+          {
+            "days": 1460,
+            "risk": 0.0122
+          },
+          {
+            "days": 1491,
+            "risk": 0.0129
+          },
+          {
+            "days": 1521,
+            "risk": 0.013
+          },
+          {
+            "days": 1552,
+            "risk": 0.0133
+          },
+          {
+            "days": 1582,
+            "risk": 0.0137
+          },
+          {
+            "days": 1612,
+            "risk": 0.0142
+          },
+          {
+            "days": 1643,
+            "risk": 0.0148
+          },
+          {
+            "days": 1673,
+            "risk": 0.0152
+          },
+          {
+            "days": 1704,
+            "risk": 0.0156
+          },
+          {
+            "days": 1734,
+            "risk": 0.016
+          },
+          {
+            "days": 1765,
+            "risk": 0.0161
+          },
+          {
+            "days": 1795,
+            "risk": 0.0165
+          },
+          {
+            "days": 1826,
+            "risk": 0.0167
+          }
+        ]
+      },
+      "stage2_with_xray": {
+        "risk_5y": 0.01,
+        "risk_by_year": {
+          "1": 0.001,
+          "2": 0.0026,
+          "3": 0.0045,
+          "4": 0.0072,
+          "5": 0.01
+        },
+        "expected_time_years": null,
+        "triage": {
+          "band": "green",
+          "action": "Continue conservative care; re-review later",
+          "question": "Refer to an OA specialist to discuss surgery?"
+        },
+        "curve": [
+          {
+            "days": 0,
+            "risk": 0.0
+          },
+          {
+            "days": 30,
+            "risk": 0.0
+          },
+          {
+            "days": 60,
+            "risk": 0.0
+          },
+          {
+            "days": 91,
+            "risk": 0.0
+          },
+          {
+            "days": 121,
+            "risk": 0.0001
+          },
+          {
+            "days": 152,
+            "risk": 0.0002
+          },
+          {
+            "days": 182,
+            "risk": 0.0003
+          },
+          {
+            "days": 213,
+            "risk": 0.0005
+          },
+          {
+            "days": 243,
+            "risk": 0.0005
+          },
+          {
+            "days": 273,
+            "risk": 0.0006
+          },
+          {
+            "days": 304,
+            "risk": 0.0007
+          },
+          {
+            "days": 334,
+            "risk": 0.0009
+          },
+          {
+            "days": 365,
+            "risk": 0.001
+          },
+          {
+            "days": 395,
+            "risk": 0.0012
+          },
+          {
+            "days": 426,
+            "risk": 0.0012
+          },
+          {
+            "days": 456,
+            "risk": 0.0013
+          },
+          {
+            "days": 486,
+            "risk": 0.0015
+          },
+          {
+            "days": 517,
+            "risk": 0.0017
+          },
+          {
+            "days": 547,
+            "risk": 0.0019
+          },
+          {
+            "days": 578,
+            "risk": 0.0021
+          },
+          {
+            "days": 608,
+            "risk": 0.0022
+          },
+          {
+            "days": 639,
+            "risk": 0.0023
+          },
+          {
+            "days": 669,
+            "risk": 0.0024
+          },
+          {
+            "days": 699,
+            "risk": 0.0025
+          },
+          {
+            "days": 730,
+            "risk": 0.0026
+          },
+          {
+            "days": 760,
+            "risk": 0.0027
+          },
+          {
+            "days": 791,
+            "risk": 0.003
+          },
+          {
+            "days": 821,
+            "risk": 0.0033
+          },
+          {
+            "days": 852,
+            "risk": 0.0034
+          },
+          {
+            "days": 882,
+            "risk": 0.0035
+          },
+          {
+            "days": 913,
+            "risk": 0.0037
+          },
+          {
+            "days": 943,
+            "risk": 0.0039
+          },
+          {
+            "days": 973,
+            "risk": 0.004
+          },
+          {
+            "days": 1004,
+            "risk": 0.0043
+          },
+          {
+            "days": 1034,
+            "risk": 0.0044
+          },
+          {
+            "days": 1065,
+            "risk": 0.0044
+          },
+          {
+            "days": 1095,
+            "risk": 0.0045
+          },
+          {
+            "days": 1126,
+            "risk": 0.0047
+          },
+          {
+            "days": 1156,
+            "risk": 0.0048
+          },
+          {
+            "days": 1186,
+            "risk": 0.0051
+          },
+          {
+            "days": 1217,
+            "risk": 0.0054
+          },
+          {
+            "days": 1247,
+            "risk": 0.0057
+          },
+          {
+            "days": 1278,
+            "risk": 0.006
+          },
+          {
+            "days": 1308,
+            "risk": 0.0061
+          },
+          {
+            "days": 1339,
+            "risk": 0.0062
+          },
+          {
+            "days": 1369,
+            "risk": 0.0066
+          },
+          {
+            "days": 1399,
+            "risk": 0.007
+          },
+          {
+            "days": 1430,
+            "risk": 0.0071
+          },
+          {
+            "days": 1460,
+            "risk": 0.0072
+          },
+          {
+            "days": 1491,
+            "risk": 0.0076
+          },
+          {
+            "days": 1521,
+            "risk": 0.0077
+          },
+          {
+            "days": 1552,
+            "risk": 0.0079
+          },
+          {
+            "days": 1582,
+            "risk": 0.0081
+          },
+          {
+            "days": 1612,
+            "risk": 0.0085
+          },
+          {
+            "days": 1643,
+            "risk": 0.0088
+          },
+          {
+            "days": 1673,
+            "risk": 0.009
+          },
+          {
+            "days": 1704,
+            "risk": 0.0093
+          },
+          {
+            "days": 1734,
+            "risk": 0.0095
+          },
+          {
+            "days": 1765,
+            "risk": 0.0096
+          },
+          {
+            "days": 1795,
+            "risk": 0.0098
+          },
+          {
+            "days": 1826,
+            "risk": 0.01
+          }
+        ]
+      }
+    },
+    {
+      "name": "Mild-moderate OA",
+      "stage1_clinical": {
+        "risk_5y": 0.097,
+        "risk_by_year": {
+          "1": 0.0103,
+          "2": 0.0272,
+          "3": 0.0456,
+          "4": 0.0717,
+          "5": 0.097
+        },
+        "expected_time_years": null,
+        "triage": {
+          "band": "amber",
+          "action": "Consider a knee X-ray (clinical judgement)",
+          "question": "Should this knee be X-rayed?"
+        },
+        "curve": [
+          {
+            "days": 0,
+            "risk": 0.0004
+          },
+          {
+            "days": 30,
+            "risk": 0.0004
+          },
+          {
+            "days": 60,
+            "risk": 0.0004
+          },
+          {
+            "days": 91,
+            "risk": 0.0004
+          },
+          {
+            "days": 121,
+            "risk": 0.0009
+          },
+          {
+            "days": 152,
+            "risk": 0.0021
+          },
+          {
+            "days": 182,
+            "risk": 0.0034
+          },
+          {
+            "days": 213,
+            "risk": 0.0047
+          },
+          {
+            "days": 243,
+            "risk": 0.0047
+          },
+          {
+            "days": 273,
+            "risk": 0.0065
+          },
+          {
+            "days": 304,
+            "risk": 0.0077
+          },
+          {
+            "days": 334,
+            "risk": 0.009
+          },
+          {
+            "days": 365,
+            "risk": 0.0103
+          },
+          {
+            "days": 395,
+            "risk": 0.0121
+          },
+          {
+            "days": 426,
+            "risk": 0.0125
+          },
+          {
+            "days": 456,
+            "risk": 0.0134
+          },
+          {
+            "days": 486,
+            "risk": 0.0152
+          },
+          {
+            "days": 517,
+            "risk": 0.0174
+          },
+          {
+            "days": 547,
+            "risk": 0.0192
+          },
+          {
+            "days": 578,
+            "risk": 0.0219
+          },
+          {
+            "days": 608,
+            "risk": 0.0223
+          },
+          {
+            "days": 639,
+            "risk": 0.0236
+          },
+          {
+            "days": 669,
+            "risk": 0.0245
+          },
+          {
+            "days": 699,
+            "risk": 0.0254
+          },
+          {
+            "days": 730,
+            "risk": 0.0272
+          },
+          {
+            "days": 760,
+            "risk": 0.0281
+          },
+          {
+            "days": 791,
+            "risk": 0.0309
+          },
+          {
+            "days": 821,
+            "risk": 0.0336
+          },
+          {
+            "days": 852,
+            "risk": 0.035
+          },
+          {
+            "days": 882,
+            "risk": 0.0359
+          },
+          {
+            "days": 913,
+            "risk": 0.0373
+          },
+          {
+            "days": 943,
+            "risk": 0.0396
+          },
+          {
+            "days": 973,
+            "risk": 0.0405
+          },
+          {
+            "days": 1004,
+            "risk": 0.0433
+          },
+          {
+            "days": 1034,
+            "risk": 0.0442
+          },
+          {
+            "days": 1065,
+            "risk": 0.0447
+          },
+          {
+            "days": 1095,
+            "risk": 0.0456
+          },
+          {
+            "days": 1126,
+            "risk": 0.0475
+          },
+          {
+            "days": 1156,
+            "risk": 0.0489
+          },
+          {
+            "days": 1186,
+            "risk": 0.0512
+          },
+          {
+            "days": 1217,
+            "risk": 0.0541
+          },
+          {
+            "days": 1247,
+            "risk": 0.0574
+          },
+          {
+            "days": 1278,
+            "risk": 0.0597
+          },
+          {
+            "days": 1308,
+            "risk": 0.0612
+          },
+          {
+            "days": 1339,
+            "risk": 0.0621
+          },
+          {
+            "days": 1369,
+            "risk": 0.0659
+          },
+          {
+            "days": 1399,
+            "risk": 0.0693
+          },
+          {
+            "days": 1430,
+            "risk": 0.0702
+          },
+          {
+            "days": 1460,
+            "risk": 0.0717
+          },
+          {
+            "days": 1491,
+            "risk": 0.0756
+          },
+          {
+            "days": 1521,
+            "risk": 0.0761
+          },
+          {
+            "days": 1552,
+            "risk": 0.0776
+          },
+          {
+            "days": 1582,
+            "risk": 0.0801
+          },
+          {
+            "days": 1612,
+            "risk": 0.0831
+          },
+          {
+            "days": 1643,
+            "risk": 0.0865
+          },
+          {
+            "days": 1673,
+            "risk": 0.0885
+          },
+          {
+            "days": 1704,
+            "risk": 0.0905
+          },
+          {
+            "days": 1734,
+            "risk": 0.093
+          },
+          {
+            "days": 1765,
+            "risk": 0.0935
+          },
+          {
+            "days": 1795,
+            "risk": 0.0955
+          },
+          {
+            "days": 1826,
+            "risk": 0.097
+          }
+        ]
+      },
+      "stage2_with_xray": {
+        "risk_5y": 0.0424,
+        "risk_by_year": {
+          "1": 0.0043,
+          "2": 0.0114,
+          "3": 0.0193,
+          "4": 0.0309,
+          "5": 0.0424
+        },
+        "expected_time_years": null,
+        "triage": {
+          "band": "green",
+          "action": "Continue conservative care; re-review later",
+          "question": "Refer to an OA specialist to discuss surgery?"
+        },
+        "curve": [
+          {
+            "days": 0,
+            "risk": 0.0002
+          },
+          {
+            "days": 30,
+            "risk": 0.0002
+          },
+          {
+            "days": 60,
+            "risk": 0.0002
+          },
+          {
+            "days": 91,
+            "risk": 0.0002
+          },
+          {
+            "days": 121,
+            "risk": 0.0004
+          },
+          {
+            "days": 152,
+            "risk": 0.0009
+          },
+          {
+            "days": 182,
+            "risk": 0.0014
+          },
+          {
+            "days": 213,
+            "risk": 0.002
+          },
+          {
+            "days": 243,
+            "risk": 0.002
+          },
+          {
+            "days": 273,
+            "risk": 0.0027
+          },
+          {
+            "days": 304,
+            "risk": 0.0032
+          },
+          {
+            "days": 334,
+            "risk": 0.0037
+          },
+          {
+            "days": 365,
+            "risk": 0.0043
+          },
+          {
+            "days": 395,
+            "risk": 0.005
+          },
+          {
+            "days": 426,
+            "risk": 0.0052
+          },
+          {
+            "days": 456,
+            "risk": 0.0056
+          },
+          {
+            "days": 486,
+            "risk": 0.0063
+          },
+          {
+            "days": 517,
+            "risk": 0.0072
+          },
+          {
+            "days": 547,
+            "risk": 0.008
+          },
+          {
+            "days": 578,
+            "risk": 0.0091
+          },
+          {
+            "days": 608,
+            "risk": 0.0093
+          },
+          {
+            "days": 639,
+            "risk": 0.0099
+          },
+          {
+            "days": 669,
+            "risk": 0.0102
+          },
+          {
+            "days": 699,
+            "risk": 0.0106
+          },
+          {
+            "days": 730,
+            "risk": 0.0114
+          },
+          {
+            "days": 760,
+            "risk": 0.0118
+          },
+          {
+            "days": 791,
+            "risk": 0.0129
+          },
+          {
+            "days": 821,
+            "risk": 0.0141
+          },
+          {
+            "days": 852,
+            "risk": 0.0147
+          },
+          {
+            "days": 882,
+            "risk": 0.0151
+          },
+          {
+            "days": 913,
+            "risk": 0.0157
+          },
+          {
+            "days": 943,
+            "risk": 0.0167
+          },
+          {
+            "days": 973,
+            "risk": 0.0171
+          },
+          {
+            "days": 1004,
+            "risk": 0.0183
+          },
+          {
+            "days": 1034,
+            "risk": 0.0187
+          },
+          {
+            "days": 1065,
+            "risk": 0.0189
+          },
+          {
+            "days": 1095,
+            "risk": 0.0193
+          },
+          {
+            "days": 1126,
+            "risk": 0.0201
+          },
+          {
+            "days": 1156,
+            "risk": 0.0207
+          },
+          {
+            "days": 1186,
+            "risk": 0.0217
+          },
+          {
+            "days": 1217,
+            "risk": 0.023
+          },
+          {
+            "days": 1247,
+            "risk": 0.0244
+          },
+          {
+            "days": 1278,
+            "risk": 0.0255
+          },
+          {
+            "days": 1308,
+            "risk": 0.0261
+          },
+          {
+            "days": 1339,
+            "risk": 0.0265
+          },
+          {
+            "days": 1369,
+            "risk": 0.0283
+          },
+          {
+            "days": 1399,
+            "risk": 0.0298
+          },
+          {
+            "days": 1430,
+            "risk": 0.0302
+          },
+          {
+            "days": 1460,
+            "risk": 0.0309
+          },
+          {
+            "days": 1491,
+            "risk": 0.0326
+          },
+          {
+            "days": 1521,
+            "risk": 0.0328
+          },
+          {
+            "days": 1552,
+            "risk": 0.0335
+          },
+          {
+            "days": 1582,
+            "risk": 0.0346
+          },
+          {
+            "days": 1612,
+            "risk": 0.036
+          },
+          {
+            "days": 1643,
+            "risk": 0.0376
+          },
+          {
+            "days": 1673,
+            "risk": 0.0385
+          },
+          {
+            "days": 1704,
+            "risk": 0.0394
+          },
+          {
+            "days": 1734,
+            "risk": 0.0406
+          },
+          {
+            "days": 1765,
+            "risk": 0.0408
+          },
+          {
+            "days": 1795,
+            "risk": 0.0417
+          },
+          {
+            "days": 1826,
+            "risk": 0.0424
+          }
+        ]
+      }
+    },
+    {
+      "name": "Moderate OA",
+      "stage1_clinical": {
+        "risk_5y": 0.1378,
+        "risk_by_year": {
+          "1": 0.015,
+          "2": 0.0393,
+          "3": 0.0656,
+          "4": 0.1024,
+          "5": 0.1378
+        },
+        "expected_time_years": null,
+        "triage": {
+          "band": "red",
+          "action": "Refer for a weight-bearing knee X-ray",
+          "question": "Should this knee be X-rayed?"
+        },
+        "curve": [
+          {
+            "days": 0,
+            "risk": 0.0006
+          },
+          {
+            "days": 30,
+            "risk": 0.0006
+          },
+          {
+            "days": 60,
+            "risk": 0.0006
+          },
+          {
+            "days": 91,
+            "risk": 0.0006
+          },
+          {
+            "days": 121,
+            "risk": 0.0012
+          },
+          {
+            "days": 152,
+            "risk": 0.0031
+          },
+          {
+            "days": 182,
+            "risk": 0.005
+          },
+          {
+            "days": 213,
+            "risk": 0.0069
+          },
+          {
+            "days": 243,
+            "risk": 0.0069
+          },
+          {
+            "days": 273,
+            "risk": 0.0094
+          },
+          {
+            "days": 304,
+            "risk": 0.0112
+          },
+          {
+            "days": 334,
+            "risk": 0.0131
+          },
+          {
+            "days": 365,
+            "risk": 0.015
+          },
+          {
+            "days": 395,
+            "risk": 0.0175
+          },
+          {
+            "days": 426,
+            "risk": 0.0181
+          },
+          {
+            "days": 456,
+            "risk": 0.0194
+          },
+          {
+            "days": 486,
+            "risk": 0.022
+          },
+          {
+            "days": 517,
+            "risk": 0.0252
+          },
+          {
+            "days": 547,
+            "risk": 0.0277
+          },
+          {
+            "days": 578,
+            "risk": 0.0316
+          },
+          {
+            "days": 608,
+            "risk": 0.0322
+          },
+          {
+            "days": 639,
+            "risk": 0.0342
+          },
+          {
+            "days": 669,
+            "risk": 0.0354
+          },
+          {
+            "days": 699,
+            "risk": 0.0367
+          },
+          {
+            "days": 730,
+            "risk": 0.0393
+          },
+          {
+            "days": 760,
+            "risk": 0.0406
+          },
+          {
+            "days": 791,
+            "risk": 0.0445
+          },
+          {
+            "days": 821,
+            "risk": 0.0485
+          },
+          {
+            "days": 852,
+            "risk": 0.0504
+          },
+          {
+            "days": 882,
+            "risk": 0.0518
+          },
+          {
+            "days": 913,
+            "risk": 0.0537
+          },
+          {
+            "days": 943,
+            "risk": 0.057
+          },
+          {
+            "days": 973,
+            "risk": 0.0583
+          },
+          {
+            "days": 1004,
+            "risk": 0.0623
+          },
+          {
+            "days": 1034,
+            "risk": 0.0636
+          },
+          {
+            "days": 1065,
+            "risk": 0.0642
+          },
+          {
+            "days": 1095,
+            "risk": 0.0656
+          },
+          {
+            "days": 1126,
+            "risk": 0.0682
+          },
+          {
+            "days": 1156,
+            "risk": 0.0702
+          },
+          {
+            "days": 1186,
+            "risk": 0.0735
+          },
+          {
+            "days": 1217,
+            "risk": 0.0775
+          },
+          {
+            "days": 1247,
+            "risk": 0.0822
+          },
+          {
+            "days": 1278,
+            "risk": 0.0856
+          },
+          {
+            "days": 1308,
+            "risk": 0.0876
+          },
+          {
+            "days": 1339,
+            "risk": 0.089
+          },
+          {
+            "days": 1369,
+            "risk": 0.0943
+          },
+          {
+            "days": 1399,
+            "risk": 0.099
+          },
+          {
+            "days": 1430,
+            "risk": 0.1004
+          },
+          {
+            "days": 1460,
+            "risk": 0.1024
+          },
+          {
+            "days": 1491,
+            "risk": 0.1079
+          },
+          {
+            "days": 1521,
+            "risk": 0.1086
+          },
+          {
+            "days": 1552,
+            "risk": 0.1107
+          },
+          {
+            "days": 1582,
+            "risk": 0.1142
+          },
+          {
+            "days": 1612,
+            "risk": 0.1183
+          },
+          {
+            "days": 1643,
+            "risk": 0.1232
+          },
+          {
+            "days": 1673,
+            "risk": 0.126
+          },
+          {
+            "days": 1704,
+            "risk": 0.1288
+          },
+          {
+            "days": 1734,
+            "risk": 0.1322
+          },
+          {
+            "days": 1765,
+            "risk": 0.1329
+          },
+          {
+            "days": 1795,
+            "risk": 0.1357
+          },
+          {
+            "days": 1826,
+            "risk": 0.1378
+          }
+        ]
+      },
+      "stage2_with_xray": {
+        "risk_5y": 0.1173,
+        "risk_by_year": {
+          "1": 0.0123,
+          "2": 0.0324,
+          "3": 0.0545,
+          "4": 0.0862,
+          "5": 0.1173
+        },
+        "expected_time_years": null,
+        "triage": {
+          "band": "amber",
+          "action": "Refer to OA specialist \u2014 routine / shared decision",
+          "question": "Refer to an OA specialist to discuss surgery?"
+        },
+        "curve": [
+          {
+            "days": 0,
+            "risk": 0.0005
+          },
+          {
+            "days": 30,
+            "risk": 0.0005
+          },
+          {
+            "days": 60,
+            "risk": 0.0005
+          },
+          {
+            "days": 91,
+            "risk": 0.0005
+          },
+          {
+            "days": 121,
+            "risk": 0.001
+          },
+          {
+            "days": 152,
+            "risk": 0.0025
+          },
+          {
+            "days": 182,
+            "risk": 0.0041
+          },
+          {
+            "days": 213,
+            "risk": 0.0056
+          },
+          {
+            "days": 243,
+            "risk": 0.0056
+          },
+          {
+            "days": 273,
+            "risk": 0.0077
+          },
+          {
+            "days": 304,
+            "risk": 0.0092
+          },
+          {
+            "days": 334,
+            "risk": 0.0107
+          },
+          {
+            "days": 365,
+            "risk": 0.0123
+          },
+          {
+            "days": 395,
+            "risk": 0.0144
+          },
+          {
+            "days": 426,
+            "risk": 0.0149
+          },
+          {
+            "days": 456,
+            "risk": 0.0159
+          },
+          {
+            "days": 486,
+            "risk": 0.018
+          },
+          {
+            "days": 517,
+            "risk": 0.0207
+          },
+          {
+            "days": 547,
+            "risk": 0.0228
+          },
+          {
+            "days": 578,
+            "risk": 0.026
+          },
+          {
+            "days": 608,
+            "risk": 0.0265
+          },
+          {
+            "days": 639,
+            "risk": 0.0281
+          },
+          {
+            "days": 669,
+            "risk": 0.0292
+          },
+          {
+            "days": 699,
+            "risk": 0.0302
+          },
+          {
+            "days": 730,
+            "risk": 0.0324
+          },
+          {
+            "days": 760,
+            "risk": 0.0335
+          },
+          {
+            "days": 791,
+            "risk": 0.0367
+          },
+          {
+            "days": 821,
+            "risk": 0.04
+          },
+          {
+            "days": 852,
+            "risk": 0.0417
+          },
+          {
+            "days": 882,
+            "risk": 0.0428
+          },
+          {
+            "days": 913,
+            "risk": 0.0445
+          },
+          {
+            "days": 943,
+            "risk": 0.0472
+          },
+          {
+            "days": 973,
+            "risk": 0.0483
+          },
+          {
+            "days": 1004,
+            "risk": 0.0517
+          },
+          {
+            "days": 1034,
+            "risk": 0.0528
+          },
+          {
+            "days": 1065,
+            "risk": 0.0533
+          },
+          {
+            "days": 1095,
+            "risk": 0.0545
+          },
+          {
+            "days": 1126,
+            "risk": 0.0567
+          },
+          {
+            "days": 1156,
+            "risk": 0.0584
+          },
+          {
+            "days": 1186,
+            "risk": 0.0613
+          },
+          {
+            "days": 1217,
+            "risk": 0.0647
+          },
+          {
+            "days": 1247,
+            "risk": 0.0687
+          },
+          {
+            "days": 1278,
+            "risk": 0.0716
+          },
+          {
+            "days": 1308,
+            "risk": 0.0733
+          },
+          {
+            "days": 1339,
+            "risk": 0.0745
+          },
+          {
+            "days": 1369,
+            "risk": 0.0792
+          },
+          {
+            "days": 1399,
+            "risk": 0.0833
+          },
+          {
+            "days": 1430,
+            "risk": 0.0844
+          },
+          {
+            "days": 1460,
+            "risk": 0.0862
+          },
+          {
+            "days": 1491,
+            "risk": 0.091
+          },
+          {
+            "days": 1521,
+            "risk": 0.0916
+          },
+          {
+            "days": 1552,
+            "risk": 0.0934
+          },
+          {
+            "days": 1582,
+            "risk": 0.0965
+          },
+          {
+            "days": 1612,
+            "risk": 0.1001
+          },
+          {
+            "days": 1643,
+            "risk": 0.1044
+          },
+          {
+            "days": 1673,
+            "risk": 0.1068
+          },
+          {
+            "days": 1704,
+            "risk": 0.1093
+          },
+          {
+            "days": 1734,
+            "risk": 0.1124
+          },
+          {
+            "days": 1765,
+            "risk": 0.113
+          },
+          {
+            "days": 1795,
+            "risk": 0.1155
+          },
+          {
+            "days": 1826,
+            "risk": 0.1173
+          }
+        ]
+      }
+    },
+    {
+      "name": "No surgery within 10 years",
+      "stage1_clinical": {
+        "risk_5y": 0.1167,
+        "risk_by_year": {
+          "1": 0.0126,
+          "2": 0.033,
+          "3": 0.0552,
+          "4": 0.0865,
+          "5": 0.1167
+        },
+        "expected_time_years": null,
+        "triage": {
+          "band": "red",
+          "action": "Refer for a weight-bearing knee X-ray",
+          "question": "Should this knee be X-rayed?"
+        },
+        "curve": [
+          {
+            "days": 0,
+            "risk": 0.0005
+          },
+          {
+            "days": 30,
+            "risk": 0.0005
+          },
+          {
+            "days": 60,
+            "risk": 0.0005
+          },
+          {
+            "days": 91,
+            "risk": 0.0005
+          },
+          {
+            "days": 121,
+            "risk": 0.001
+          },
+          {
+            "days": 152,
+            "risk": 0.0026
+          },
+          {
+            "days": 182,
+            "risk": 0.0042
+          },
+          {
+            "days": 213,
+            "risk": 0.0057
+          },
+          {
+            "days": 243,
+            "risk": 0.0057
+          },
+          {
+            "days": 273,
+            "risk": 0.0078
+          },
+          {
+            "days": 304,
+            "risk": 0.0094
+          },
+          {
+            "days": 334,
+            "risk": 0.011
+          },
+          {
+            "days": 365,
+            "risk": 0.0126
+          },
+          {
+            "days": 395,
+            "risk": 0.0147
+          },
+          {
+            "days": 426,
+            "risk": 0.0152
+          },
+          {
+            "days": 456,
+            "risk": 0.0163
+          },
+          {
+            "days": 486,
+            "risk": 0.0184
+          },
+          {
+            "days": 517,
+            "risk": 0.0211
+          },
+          {
+            "days": 547,
+            "risk": 0.0233
+          },
+          {
+            "days": 578,
+            "risk": 0.0265
+          },
+          {
+            "days": 608,
+            "risk": 0.027
+          },
+          {
+            "days": 639,
+            "risk": 0.0287
+          },
+          {
+            "days": 669,
+            "risk": 0.0297
+          },
+          {
+            "days": 699,
+            "risk": 0.0308
+          },
+          {
+            "days": 730,
+            "risk": 0.033
+          },
+          {
+            "days": 760,
+            "risk": 0.0341
+          },
+          {
+            "days": 791,
+            "risk": 0.0374
+          },
+          {
+            "days": 821,
+            "risk": 0.0407
+          },
+          {
+            "days": 852,
+            "risk": 0.0424
+          },
+          {
+            "days": 882,
+            "risk": 0.0435
+          },
+          {
+            "days": 913,
+            "risk": 0.0452
+          },
+          {
+            "days": 943,
+            "risk": 0.0479
+          },
+          {
+            "days": 973,
+            "risk": 0.049
+          },
+          {
+            "days": 1004,
+            "risk": 0.0524
+          },
+          {
+            "days": 1034,
+            "risk": 0.0535
+          },
+          {
+            "days": 1065,
+            "risk": 0.054
+          },
+          {
+            "days": 1095,
+            "risk": 0.0552
+          },
+          {
+            "days": 1126,
+            "risk": 0.0574
+          },
+          {
+            "days": 1156,
+            "risk": 0.0591
+          },
+          {
+            "days": 1186,
+            "risk": 0.0619
+          },
+          {
+            "days": 1217,
+            "risk": 0.0653
+          },
+          {
+            "days": 1247,
+            "risk": 0.0693
+          },
+          {
+            "days": 1278,
+            "risk": 0.0721
+          },
+          {
+            "days": 1308,
+            "risk": 0.0739
+          },
+          {
+            "days": 1339,
+            "risk": 0.075
+          },
+          {
+            "days": 1369,
+            "risk": 0.0796
+          },
+          {
+            "days": 1399,
+            "risk": 0.0836
+          },
+          {
+            "days": 1430,
+            "risk": 0.0847
+          },
+          {
+            "days": 1460,
+            "risk": 0.0865
+          },
+          {
+            "days": 1491,
+            "risk": 0.0911
+          },
+          {
+            "days": 1521,
+            "risk": 0.0917
+          },
+          {
+            "days": 1552,
+            "risk": 0.0935
+          },
+          {
+            "days": 1582,
+            "risk": 0.0965
+          },
+          {
+            "days": 1612,
+            "risk": 0.1
+          },
+          {
+            "days": 1643,
+            "risk": 0.1042
+          },
+          {
+            "days": 1673,
+            "risk": 0.1066
+          },
+          {
+            "days": 1704,
+            "risk": 0.1089
+          },
+          {
+            "days": 1734,
+            "risk": 0.1119
+          },
+          {
+            "days": 1765,
+            "risk": 0.1125
+          },
+          {
+            "days": 1795,
+            "risk": 0.1149
+          },
+          {
+            "days": 1826,
+            "risk": 0.1167
+          }
+        ]
+      },
+      "stage2_with_xray": {
+        "risk_5y": 0.1501,
+        "risk_by_year": {
+          "1": 0.016,
+          "2": 0.042,
+          "3": 0.0704,
+          "4": 0.1109,
+          "5": 0.1501
+        },
+        "expected_time_years": 14.0,
+        "triage": {
+          "band": "amber",
+          "action": "Refer to OA specialist \u2014 routine / shared decision",
+          "question": "Refer to an OA specialist to discuss surgery?"
+        },
+        "curve": [
+          {
+            "days": 0,
+            "risk": 0.0007
+          },
+          {
+            "days": 30,
+            "risk": 0.0007
+          },
+          {
+            "days": 60,
+            "risk": 0.0007
+          },
+          {
+            "days": 91,
+            "risk": 0.0007
+          },
+          {
+            "days": 121,
+            "risk": 0.0013
+          },
+          {
+            "days": 152,
+            "risk": 0.0033
+          },
+          {
+            "days": 182,
+            "risk": 0.0053
+          },
+          {
+            "days": 213,
+            "risk": 0.0073
+          },
+          {
+            "days": 243,
+            "risk": 0.0073
+          },
+          {
+            "days": 273,
+            "risk": 0.01
+          },
+          {
+            "days": 304,
+            "risk": 0.012
+          },
+          {
+            "days": 334,
+            "risk": 0.014
+          },
+          {
+            "days": 365,
+            "risk": 0.016
+          },
+          {
+            "days": 395,
+            "risk": 0.0187
+          },
+          {
+            "days": 426,
+            "risk": 0.0194
+          },
+          {
+            "days": 456,
+            "risk": 0.0207
+          },
+          {
+            "days": 486,
+            "risk": 0.0235
+          },
+          {
+            "days": 517,
+            "risk": 0.0269
+          },
+          {
+            "days": 547,
+            "risk": 0.0296
+          },
+          {
+            "days": 578,
+            "risk": 0.0337
+          },
+          {
+            "days": 608,
+            "risk": 0.0344
+          },
+          {
+            "days": 639,
+            "risk": 0.0365
+          },
+          {
+            "days": 669,
+            "risk": 0.0378
+          },
+          {
+            "days": 699,
+            "risk": 0.0392
+          },
+          {
+            "days": 730,
+            "risk": 0.042
+          },
+          {
+            "days": 760,
+            "risk": 0.0434
+          },
+          {
+            "days": 791,
+            "risk": 0.0476
+          },
+          {
+            "days": 821,
+            "risk": 0.0519
+          },
+          {
+            "days": 852,
+            "risk": 0.054
+          },
+          {
+            "days": 882,
+            "risk": 0.0554
+          },
+          {
+            "days": 913,
+            "risk": 0.0575
+          },
+          {
+            "days": 943,
+            "risk": 0.0611
+          },
+          {
+            "days": 973,
+            "risk": 0.0625
+          },
+          {
+            "days": 1004,
+            "risk": 0.0668
+          },
+          {
+            "days": 1034,
+            "risk": 0.0682
+          },
+          {
+            "days": 1065,
+            "risk": 0.0689
+          },
+          {
+            "days": 1095,
+            "risk": 0.0704
+          },
+          {
+            "days": 1126,
+            "risk": 0.0733
+          },
+          {
+            "days": 1156,
+            "risk": 0.0754
+          },
+          {
+            "days": 1186,
+            "risk": 0.0791
+          },
+          {
+            "days": 1217,
+            "risk": 0.0835
+          },
+          {
+            "days": 1247,
+            "risk": 0.0886
+          },
+          {
+            "days": 1278,
+            "risk": 0.0923
+          },
+          {
+            "days": 1308,
+            "risk": 0.0945
+          },
+          {
+            "days": 1339,
+            "risk": 0.096
+          },
+          {
+            "days": 1369,
+            "risk": 0.1019
+          },
+          {
+            "days": 1399,
+            "risk": 0.1071
+          },
+          {
+            "days": 1430,
+            "risk": 0.1086
+          },
+          {
+            "days": 1460,
+            "risk": 0.1109
+          },
+          {
+            "days": 1491,
+            "risk": 0.1169
+          },
+          {
+            "days": 1521,
+            "risk": 0.1177
+          },
+          {
+            "days": 1552,
+            "risk": 0.12
+          },
+          {
+            "days": 1582,
+            "risk": 0.1238
+          },
+          {
+            "days": 1612,
+            "risk": 0.1284
+          },
+          {
+            "days": 1643,
+            "risk": 0.1338
+          },
+          {
+            "days": 1673,
+            "risk": 0.1369
+          },
+          {
+            "days": 1704,
+            "risk": 0.14
+          },
+          {
+            "days": 1734,
+            "risk": 0.1439
+          },
+          {
+            "days": 1765,
+            "risk": 0.1447
+          },
+          {
+            "days": 1795,
+            "risk": 0.1478
+          },
+          {
+            "days": 1826,
+            "risk": 0.1501
+          }
+        ]
+      }
+    },
+    {
+      "name": "Surgery ~10 years",
+      "stage1_clinical": {
+        "risk_5y": 0.1428,
+        "risk_by_year": {
+          "1": 0.0156,
+          "2": 0.0408,
+          "3": 0.068,
+          "4": 0.1062,
+          "5": 0.1428
+        },
+        "expected_time_years": 15.9,
+        "triage": {
+          "band": "red",
+          "action": "Refer for a weight-bearing knee X-ray",
+          "question": "Should this knee be X-rayed?"
+        },
+        "curve": [
+          {
+            "days": 0,
+            "risk": 0.0006
+          },
+          {
+            "days": 30,
+            "risk": 0.0006
+          },
+          {
+            "days": 60,
+            "risk": 0.0006
+          },
+          {
+            "days": 91,
+            "risk": 0.0006
+          },
+          {
+            "days": 121,
+            "risk": 0.0013
+          },
+          {
+            "days": 152,
+            "risk": 0.0032
+          },
+          {
+            "days": 182,
+            "risk": 0.0052
+          },
+          {
+            "days": 213,
+            "risk": 0.0071
+          },
+          {
+            "days": 243,
+            "risk": 0.0071
+          },
+          {
+            "days": 273,
+            "risk": 0.0097
+          },
+          {
+            "days": 304,
+            "risk": 0.0117
+          },
+          {
+            "days": 334,
+            "risk": 0.0136
+          },
+          {
+            "days": 365,
+            "risk": 0.0156
+          },
+          {
+            "days": 395,
+            "risk": 0.0182
+          },
+          {
+            "days": 426,
+            "risk": 0.0188
+          },
+          {
+            "days": 456,
+            "risk": 0.0202
+          },
+          {
+            "days": 486,
+            "risk": 0.0228
+          },
+          {
+            "days": 517,
+            "risk": 0.0261
+          },
+          {
+            "days": 547,
+            "risk": 0.0288
+          },
+          {
+            "days": 578,
+            "risk": 0.0328
+          },
+          {
+            "days": 608,
+            "risk": 0.0335
+          },
+          {
+            "days": 639,
+            "risk": 0.0355
+          },
+          {
+            "days": 669,
+            "risk": 0.0368
+          },
+          {
+            "days": 699,
+            "risk": 0.0381
+          },
+          {
+            "days": 730,
+            "risk": 0.0408
+          },
+          {
+            "days": 760,
+            "risk": 0.0422
+          },
+          {
+            "days": 791,
+            "risk": 0.0462
+          },
+          {
+            "days": 821,
+            "risk": 0.0503
+          },
+          {
+            "days": 852,
+            "risk": 0.0524
+          },
+          {
+            "days": 882,
+            "risk": 0.0537
+          },
+          {
+            "days": 913,
+            "risk": 0.0558
+          },
+          {
+            "days": 943,
+            "risk": 0.0592
+          },
+          {
+            "days": 973,
+            "risk": 0.0605
+          },
+          {
+            "days": 1004,
+            "risk": 0.0646
+          },
+          {
+            "days": 1034,
+            "risk": 0.066
+          },
+          {
+            "days": 1065,
+            "risk": 0.0667
+          },
+          {
+            "days": 1095,
+            "risk": 0.068
+          },
+          {
+            "days": 1126,
+            "risk": 0.0708
+          },
+          {
+            "days": 1156,
+            "risk": 0.0728
+          },
+          {
+            "days": 1186,
+            "risk": 0.0763
+          },
+          {
+            "days": 1217,
+            "risk": 0.0804
+          },
+          {
+            "days": 1247,
+            "risk": 0.0853
+          },
+          {
+            "days": 1278,
+            "risk": 0.0888
+          },
+          {
+            "days": 1308,
+            "risk": 0.0909
+          },
+          {
+            "days": 1339,
+            "risk": 0.0923
+          },
+          {
+            "days": 1369,
+            "risk": 0.0978
+          },
+          {
+            "days": 1399,
+            "risk": 0.1027
+          },
+          {
+            "days": 1430,
+            "risk": 0.1041
+          },
+          {
+            "days": 1460,
+            "risk": 0.1062
+          },
+          {
+            "days": 1491,
+            "risk": 0.1119
+          },
+          {
+            "days": 1521,
+            "risk": 0.1126
+          },
+          {
+            "days": 1552,
+            "risk": 0.1147
+          },
+          {
+            "days": 1582,
+            "risk": 0.1183
+          },
+          {
+            "days": 1612,
+            "risk": 0.1227
+          },
+          {
+            "days": 1643,
+            "risk": 0.1277
+          },
+          {
+            "days": 1673,
+            "risk": 0.1306
+          },
+          {
+            "days": 1704,
+            "risk": 0.1334
+          },
+          {
+            "days": 1734,
+            "risk": 0.137
+          },
+          {
+            "days": 1765,
+            "risk": 0.1377
+          },
+          {
+            "days": 1795,
+            "risk": 0.1406
+          },
+          {
+            "days": 1826,
+            "risk": 0.1428
+          }
+        ]
+      },
+      "stage2_with_xray": {
+        "risk_5y": 0.2387,
+        "risk_by_year": {
+          "1": 0.0267,
+          "2": 0.0694,
+          "3": 0.1152,
+          "4": 0.1788,
+          "5": 0.2387
+        },
+        "expected_time_years": 9.9,
+        "triage": {
+          "band": "red",
+          "action": "Refer to OA specialist \u2014 priority, discuss surgery",
+          "question": "Refer to an OA specialist to discuss surgery?"
+        },
+        "curve": [
+          {
+            "days": 0,
+            "risk": 0.0011
+          },
+          {
+            "days": 30,
+            "risk": 0.0011
+          },
+          {
+            "days": 60,
+            "risk": 0.0011
+          },
+          {
+            "days": 91,
+            "risk": 0.0011
+          },
+          {
+            "days": 121,
+            "risk": 0.0022
+          },
+          {
+            "days": 152,
+            "risk": 0.0055
+          },
+          {
+            "days": 182,
+            "risk": 0.0089
+          },
+          {
+            "days": 213,
+            "risk": 0.0122
+          },
+          {
+            "days": 243,
+            "risk": 0.0122
+          },
+          {
+            "days": 273,
+            "risk": 0.0167
+          },
+          {
+            "days": 304,
+            "risk": 0.02
+          },
+          {
+            "days": 334,
+            "risk": 0.0233
+          },
+          {
+            "days": 365,
+            "risk": 0.0267
+          },
+          {
+            "days": 395,
+            "risk": 0.0311
+          },
+          {
+            "days": 426,
+            "risk": 0.0323
+          },
+          {
+            "days": 456,
+            "risk": 0.0345
+          },
+          {
+            "days": 486,
+            "risk": 0.039
+          },
+          {
+            "days": 517,
+            "risk": 0.0446
+          },
+          {
+            "days": 547,
+            "risk": 0.0491
+          },
+          {
+            "days": 578,
+            "risk": 0.0559
+          },
+          {
+            "days": 608,
+            "risk": 0.057
+          },
+          {
+            "days": 639,
+            "risk": 0.0604
+          },
+          {
+            "days": 669,
+            "risk": 0.0626
+          },
+          {
+            "days": 699,
+            "risk": 0.0649
+          },
+          {
+            "days": 730,
+            "risk": 0.0694
+          },
+          {
+            "days": 760,
+            "risk": 0.0717
+          },
+          {
+            "days": 791,
+            "risk": 0.0785
+          },
+          {
+            "days": 821,
+            "risk": 0.0854
+          },
+          {
+            "days": 852,
+            "risk": 0.0889
+          },
+          {
+            "days": 882,
+            "risk": 0.0911
+          },
+          {
+            "days": 913,
+            "risk": 0.0946
+          },
+          {
+            "days": 943,
+            "risk": 0.1003
+          },
+          {
+            "days": 973,
+            "risk": 0.1026
+          },
+          {
+            "days": 1004,
+            "risk": 0.1095
+          },
+          {
+            "days": 1034,
+            "risk": 0.1117
+          },
+          {
+            "days": 1065,
+            "risk": 0.1129
+          },
+          {
+            "days": 1095,
+            "risk": 0.1152
+          },
+          {
+            "days": 1126,
+            "risk": 0.1198
+          },
+          {
+            "days": 1156,
+            "risk": 0.1232
+          },
+          {
+            "days": 1186,
+            "risk": 0.129
+          },
+          {
+            "days": 1217,
+            "risk": 0.136
+          },
+          {
+            "days": 1247,
+            "risk": 0.144
+          },
+          {
+            "days": 1278,
+            "risk": 0.1498
+          },
+          {
+            "days": 1308,
+            "risk": 0.1533
+          },
+          {
+            "days": 1339,
+            "risk": 0.1556
+          },
+          {
+            "days": 1369,
+            "risk": 0.1649
+          },
+          {
+            "days": 1399,
+            "risk": 0.173
+          },
+          {
+            "days": 1430,
+            "risk": 0.1753
+          },
+          {
+            "days": 1460,
+            "risk": 0.1788
+          },
+          {
+            "days": 1491,
+            "risk": 0.1882
+          },
+          {
+            "days": 1521,
+            "risk": 0.1894
+          },
+          {
+            "days": 1552,
+            "risk": 0.1929
+          },
+          {
+            "days": 1582,
+            "risk": 0.1988
+          },
+          {
+            "days": 1612,
+            "risk": 0.2058
+          },
+          {
+            "days": 1643,
+            "risk": 0.2141
+          },
+          {
+            "days": 1673,
+            "risk": 0.2188
+          },
+          {
+            "days": 1704,
+            "risk": 0.2234
+          },
+          {
+            "days": 1734,
+            "risk": 0.2293
+          },
+          {
+            "days": 1765,
+            "risk": 0.2305
+          },
+          {
+            "days": 1795,
+            "risk": 0.2351
+          },
+          {
+            "days": 1826,
+            "risk": 0.2387
+          }
+        ]
+      }
+    },
+    {
+      "name": "Surgery ~7 years",
+      "stage1_clinical": {
+        "risk_5y": 0.186,
+        "risk_by_year": {
+          "1": 0.0207,
+          "2": 0.0542,
+          "3": 0.0898,
+          "4": 0.1393,
+          "5": 0.186
+        },
+        "expected_time_years": 12.8,
+        "triage": {
+          "band": "red",
+          "action": "Refer for a weight-bearing knee X-ray",
+          "question": "Should this knee be X-rayed?"
+        },
+        "curve": [
+          {
+            "days": 0,
+            "risk": 0.0009
+          },
+          {
+            "days": 30,
+            "risk": 0.0009
+          },
+          {
+            "days": 60,
+            "risk": 0.0009
+          },
+          {
+            "days": 91,
+            "risk": 0.0009
+          },
+          {
+            "days": 121,
+            "risk": 0.0017
+          },
+          {
+            "days": 152,
+            "risk": 0.0043
+          },
+          {
+            "days": 182,
+            "risk": 0.0069
+          },
+          {
+            "days": 213,
+            "risk": 0.0095
+          },
+          {
+            "days": 243,
+            "risk": 0.0095
+          },
+          {
+            "days": 273,
+            "risk": 0.013
+          },
+          {
+            "days": 304,
+            "risk": 0.0156
+          },
+          {
+            "days": 334,
+            "risk": 0.0181
+          },
+          {
+            "days": 365,
+            "risk": 0.0207
+          },
+          {
+            "days": 395,
+            "risk": 0.0242
+          },
+          {
+            "days": 426,
+            "risk": 0.0251
+          },
+          {
+            "days": 456,
+            "risk": 0.0269
+          },
+          {
+            "days": 486,
+            "risk": 0.0304
+          },
+          {
+            "days": 517,
+            "risk": 0.0348
+          },
+          {
+            "days": 547,
+            "risk": 0.0383
+          },
+          {
+            "days": 578,
+            "risk": 0.0436
+          },
+          {
+            "days": 608,
+            "risk": 0.0445
+          },
+          {
+            "days": 639,
+            "risk": 0.0471
+          },
+          {
+            "days": 669,
+            "risk": 0.0489
+          },
+          {
+            "days": 699,
+            "risk": 0.0506
+          },
+          {
+            "days": 730,
+            "risk": 0.0542
+          },
+          {
+            "days": 760,
+            "risk": 0.0559
+          },
+          {
+            "days": 791,
+            "risk": 0.0613
+          },
+          {
+            "days": 821,
+            "risk": 0.0666
+          },
+          {
+            "days": 852,
+            "risk": 0.0693
+          },
+          {
+            "days": 882,
+            "risk": 0.0711
+          },
+          {
+            "days": 913,
+            "risk": 0.0738
+          },
+          {
+            "days": 943,
+            "risk": 0.0783
+          },
+          {
+            "days": 973,
+            "risk": 0.08
+          },
+          {
+            "days": 1004,
+            "risk": 0.0854
+          },
+          {
+            "days": 1034,
+            "risk": 0.0872
+          },
+          {
+            "days": 1065,
+            "risk": 0.0881
+          },
+          {
+            "days": 1095,
+            "risk": 0.0898
+          },
+          {
+            "days": 1126,
+            "risk": 0.0934
+          },
+          {
+            "days": 1156,
+            "risk": 0.0961
+          },
+          {
+            "days": 1186,
+            "risk": 0.1006
+          },
+          {
+            "days": 1217,
+            "risk": 0.106
+          },
+          {
+            "days": 1247,
+            "risk": 0.1123
+          },
+          {
+            "days": 1278,
+            "risk": 0.1168
+          },
+          {
+            "days": 1308,
+            "risk": 0.1195
+          },
+          {
+            "days": 1339,
+            "risk": 0.1213
+          },
+          {
+            "days": 1369,
+            "risk": 0.1285
+          },
+          {
+            "days": 1399,
+            "risk": 0.1348
+          },
+          {
+            "days": 1430,
+            "risk": 0.1366
+          },
+          {
+            "days": 1460,
+            "risk": 0.1393
+          },
+          {
+            "days": 1491,
+            "risk": 0.1466
+          },
+          {
+            "days": 1521,
+            "risk": 0.1475
+          },
+          {
+            "days": 1552,
+            "risk": 0.1503
+          },
+          {
+            "days": 1582,
+            "risk": 0.1549
+          },
+          {
+            "days": 1612,
+            "risk": 0.1604
+          },
+          {
+            "days": 1643,
+            "risk": 0.1668
+          },
+          {
+            "days": 1673,
+            "risk": 0.1705
+          },
+          {
+            "days": 1704,
+            "risk": 0.1742
+          },
+          {
+            "days": 1734,
+            "risk": 0.1787
+          },
+          {
+            "days": 1765,
+            "risk": 0.1796
+          },
+          {
+            "days": 1795,
+            "risk": 0.1833
+          },
+          {
+            "days": 1826,
+            "risk": 0.186
+          }
+        ]
+      },
+      "stage2_with_xray": {
+        "risk_5y": 0.3589,
+        "risk_by_year": {
+          "1": 0.0431,
+          "2": 0.1107,
+          "3": 0.1809,
+          "4": 0.2747,
+          "5": 0.3589
+        },
+        "expected_time_years": 7.1,
+        "triage": {
+          "band": "red",
+          "action": "Refer to OA specialist \u2014 priority, discuss surgery",
+          "question": "Refer to an OA specialist to discuss surgery?"
+        },
+        "curve": [
+          {
+            "days": 0,
+            "risk": 0.0018
+          },
+          {
+            "days": 30,
+            "risk": 0.0018
+          },
+          {
+            "days": 60,
+            "risk": 0.0018
+          },
+          {
+            "days": 91,
+            "risk": 0.0018
+          },
+          {
+            "days": 121,
+            "risk": 0.0036
+          },
+          {
+            "days": 152,
+            "risk": 0.009
+          },
+          {
+            "days": 182,
+            "risk": 0.0144
+          },
+          {
+            "days": 213,
+            "risk": 0.0198
+          },
+          {
+            "days": 243,
+            "risk": 0.0198
+          },
+          {
+            "days": 273,
+            "risk": 0.027
+          },
+          {
+            "days": 304,
+            "risk": 0.0324
+          },
+          {
+            "days": 334,
+            "risk": 0.0378
+          },
+          {
+            "days": 365,
+            "risk": 0.0431
+          },
+          {
+            "days": 395,
+            "risk": 0.0503
+          },
+          {
+            "days": 426,
+            "risk": 0.0521
+          },
+          {
+            "days": 456,
+            "risk": 0.0557
+          },
+          {
+            "days": 486,
+            "risk": 0.0628
+          },
+          {
+            "days": 517,
+            "risk": 0.0718
+          },
+          {
+            "days": 547,
+            "risk": 0.0789
+          },
+          {
+            "days": 578,
+            "risk": 0.0895
+          },
+          {
+            "days": 608,
+            "risk": 0.0913
+          },
+          {
+            "days": 639,
+            "risk": 0.0966
+          },
+          {
+            "days": 669,
+            "risk": 0.1001
+          },
+          {
+            "days": 699,
+            "risk": 0.1036
+          },
+          {
+            "days": 730,
+            "risk": 0.1107
+          },
+          {
+            "days": 760,
+            "risk": 0.1142
+          },
+          {
+            "days": 791,
+            "risk": 0.1248
+          },
+          {
+            "days": 821,
+            "risk": 0.1355
+          },
+          {
+            "days": 852,
+            "risk": 0.1408
+          },
+          {
+            "days": 882,
+            "risk": 0.1443
+          },
+          {
+            "days": 913,
+            "risk": 0.1496
+          },
+          {
+            "days": 943,
+            "risk": 0.1584
+          },
+          {
+            "days": 973,
+            "risk": 0.1618
+          },
+          {
+            "days": 1004,
+            "risk": 0.1722
+          },
+          {
+            "days": 1034,
+            "risk": 0.1757
+          },
+          {
+            "days": 1065,
+            "risk": 0.1774
+          },
+          {
+            "days": 1095,
+            "risk": 0.1809
+          },
+          {
+            "days": 1126,
+            "risk": 0.1878
+          },
+          {
+            "days": 1156,
+            "risk": 0.193
+          },
+          {
+            "days": 1186,
+            "risk": 0.2017
+          },
+          {
+            "days": 1217,
+            "risk": 0.212
+          },
+          {
+            "days": 1247,
+            "risk": 0.224
+          },
+          {
+            "days": 1278,
+            "risk": 0.2325
+          },
+          {
+            "days": 1308,
+            "risk": 0.2376
+          },
+          {
+            "days": 1339,
+            "risk": 0.2411
+          },
+          {
+            "days": 1369,
+            "risk": 0.2546
+          },
+          {
+            "days": 1399,
+            "risk": 0.2664
+          },
+          {
+            "days": 1430,
+            "risk": 0.2697
+          },
+          {
+            "days": 1460,
+            "risk": 0.2747
+          },
+          {
+            "days": 1491,
+            "risk": 0.2882
+          },
+          {
+            "days": 1521,
+            "risk": 0.2899
+          },
+          {
+            "days": 1552,
+            "risk": 0.2949
+          },
+          {
+            "days": 1582,
+            "risk": 0.3033
+          },
+          {
+            "days": 1612,
+            "risk": 0.3133
+          },
+          {
+            "days": 1643,
+            "risk": 0.3248
+          },
+          {
+            "days": 1673,
+            "risk": 0.3314
+          },
+          {
+            "days": 1704,
+            "risk": 0.3379
+          },
+          {
+            "days": 1734,
+            "risk": 0.346
+          },
+          {
+            "days": 1765,
+            "risk": 0.3476
+          },
+          {
+            "days": 1795,
+            "risk": 0.3541
+          },
+          {
+            "days": 1826,
+            "risk": 0.3589
+          }
+        ]
+      }
+    },
+    {
+      "name": "Surgery ~5 years",
+      "stage1_clinical": {
+        "risk_5y": 0.2087,
+        "risk_by_year": {
+          "1": 0.0236,
+          "2": 0.0613,
+          "3": 0.1015,
+          "4": 0.1568,
+          "5": 0.2087
+        },
+        "expected_time_years": 11.5,
+        "triage": {
+          "band": "red",
+          "action": "Refer for a weight-bearing knee X-ray",
+          "question": "Should this knee be X-rayed?"
+        },
+        "curve": [
+          {
+            "days": 0,
+            "risk": 0.001
+          },
+          {
+            "days": 30,
+            "risk": 0.001
+          },
+          {
+            "days": 60,
+            "risk": 0.001
+          },
+          {
+            "days": 91,
+            "risk": 0.001
+          },
+          {
+            "days": 121,
+            "risk": 0.002
+          },
+          {
+            "days": 152,
+            "risk": 0.0049
+          },
+          {
+            "days": 182,
+            "risk": 0.0079
+          },
+          {
+            "days": 213,
+            "risk": 0.0108
+          },
+          {
+            "days": 243,
+            "risk": 0.0108
+          },
+          {
+            "days": 273,
+            "risk": 0.0147
+          },
+          {
+            "days": 304,
+            "risk": 0.0177
+          },
+          {
+            "days": 334,
+            "risk": 0.0206
+          },
+          {
+            "days": 365,
+            "risk": 0.0236
+          },
+          {
+            "days": 395,
+            "risk": 0.0275
+          },
+          {
+            "days": 426,
+            "risk": 0.0285
+          },
+          {
+            "days": 456,
+            "risk": 0.0305
+          },
+          {
+            "days": 486,
+            "risk": 0.0345
+          },
+          {
+            "days": 517,
+            "risk": 0.0394
+          },
+          {
+            "days": 547,
+            "risk": 0.0434
+          },
+          {
+            "days": 578,
+            "risk": 0.0494
+          },
+          {
+            "days": 608,
+            "risk": 0.0504
+          },
+          {
+            "days": 639,
+            "risk": 0.0534
+          },
+          {
+            "days": 669,
+            "risk": 0.0554
+          },
+          {
+            "days": 699,
+            "risk": 0.0574
+          },
+          {
+            "days": 730,
+            "risk": 0.0613
+          },
+          {
+            "days": 760,
+            "risk": 0.0633
+          },
+          {
+            "days": 791,
+            "risk": 0.0694
+          },
+          {
+            "days": 821,
+            "risk": 0.0754
+          },
+          {
+            "days": 852,
+            "risk": 0.0784
+          },
+          {
+            "days": 882,
+            "risk": 0.0805
+          },
+          {
+            "days": 913,
+            "risk": 0.0835
+          },
+          {
+            "days": 943,
+            "risk": 0.0885
+          },
+          {
+            "days": 973,
+            "risk": 0.0905
+          },
+          {
+            "days": 1004,
+            "risk": 0.0965
+          },
+          {
+            "days": 1034,
+            "risk": 0.0985
+          },
+          {
+            "days": 1065,
+            "risk": 0.0995
+          },
+          {
+            "days": 1095,
+            "risk": 0.1015
+          },
+          {
+            "days": 1126,
+            "risk": 0.1055
+          },
+          {
+            "days": 1156,
+            "risk": 0.1085
+          },
+          {
+            "days": 1186,
+            "risk": 0.1136
+          },
+          {
+            "days": 1217,
+            "risk": 0.1196
+          },
+          {
+            "days": 1247,
+            "risk": 0.1267
+          },
+          {
+            "days": 1278,
+            "risk": 0.1317
+          },
+          {
+            "days": 1308,
+            "risk": 0.1347
+          },
+          {
+            "days": 1339,
+            "risk": 0.1368
+          },
+          {
+            "days": 1369,
+            "risk": 0.1448
+          },
+          {
+            "days": 1399,
+            "risk": 0.1518
+          },
+          {
+            "days": 1430,
+            "risk": 0.1538
+          },
+          {
+            "days": 1460,
+            "risk": 0.1568
+          },
+          {
+            "days": 1491,
+            "risk": 0.1649
+          },
+          {
+            "days": 1521,
+            "risk": 0.166
+          },
+          {
+            "days": 1552,
+            "risk": 0.169
+          },
+          {
+            "days": 1582,
+            "risk": 0.1741
+          },
+          {
+            "days": 1612,
+            "risk": 0.1803
+          },
+          {
+            "days": 1643,
+            "risk": 0.1874
+          },
+          {
+            "days": 1673,
+            "risk": 0.1915
+          },
+          {
+            "days": 1704,
+            "risk": 0.1955
+          },
+          {
+            "days": 1734,
+            "risk": 0.2006
+          },
+          {
+            "days": 1765,
+            "risk": 0.2016
+          },
+          {
+            "days": 1795,
+            "risk": 0.2056
+          },
+          {
+            "days": 1826,
+            "risk": 0.2087
+          }
+        ]
+      },
+      "stage2_with_xray": {
+        "risk_5y": 0.5011,
+        "risk_by_year": {
+          "1": 0.0666,
+          "2": 0.1676,
+          "3": 0.268,
+          "4": 0.3949,
+          "5": 0.5011
+        },
+        "expected_time_years": 5.0,
+        "triage": {
+          "band": "red",
+          "action": "Refer to OA specialist \u2014 priority, discuss surgery",
+          "question": "Refer to an OA specialist to discuss surgery?"
+        },
+        "curve": [
+          {
+            "days": 0,
+            "risk": 0.0028
+          },
+          {
+            "days": 30,
+            "risk": 0.0028
+          },
+          {
+            "days": 60,
+            "risk": 0.0028
+          },
+          {
+            "days": 91,
+            "risk": 0.0028
+          },
+          {
+            "days": 121,
+            "risk": 0.0057
+          },
+          {
+            "days": 152,
+            "risk": 0.0141
+          },
+          {
+            "days": 182,
+            "risk": 0.0225
+          },
+          {
+            "days": 213,
+            "risk": 0.0308
+          },
+          {
+            "days": 243,
+            "risk": 0.0308
+          },
+          {
+            "days": 273,
+            "risk": 0.042
+          },
+          {
+            "days": 304,
+            "risk": 0.0502
+          },
+          {
+            "days": 334,
+            "risk": 0.0584
+          },
+          {
+            "days": 365,
+            "risk": 0.0666
+          },
+          {
+            "days": 395,
+            "risk": 0.0775
+          },
+          {
+            "days": 426,
+            "risk": 0.0802
+          },
+          {
+            "days": 456,
+            "risk": 0.0857
+          },
+          {
+            "days": 486,
+            "risk": 0.0965
+          },
+          {
+            "days": 517,
+            "risk": 0.1099
+          },
+          {
+            "days": 547,
+            "risk": 0.1206
+          },
+          {
+            "days": 578,
+            "risk": 0.1364
+          },
+          {
+            "days": 608,
+            "risk": 0.139
+          },
+          {
+            "days": 639,
+            "risk": 0.1469
+          },
+          {
+            "days": 669,
+            "risk": 0.1521
+          },
+          {
+            "days": 699,
+            "risk": 0.1573
+          },
+          {
+            "days": 730,
+            "risk": 0.1676
+          },
+          {
+            "days": 760,
+            "risk": 0.1728
+          },
+          {
+            "days": 791,
+            "risk": 0.1883
+          },
+          {
+            "days": 821,
+            "risk": 0.2036
+          },
+          {
+            "days": 852,
+            "risk": 0.2113
+          },
+          {
+            "days": 882,
+            "risk": 0.2163
+          },
+          {
+            "days": 913,
+            "risk": 0.2239
+          },
+          {
+            "days": 943,
+            "risk": 0.2363
+          },
+          {
+            "days": 973,
+            "risk": 0.2413
+          },
+          {
+            "days": 1004,
+            "risk": 0.2559
+          },
+          {
+            "days": 1034,
+            "risk": 0.2608
+          },
+          {
+            "days": 1065,
+            "risk": 0.2632
+          },
+          {
+            "days": 1095,
+            "risk": 0.268
+          },
+          {
+            "days": 1126,
+            "risk": 0.2777
+          },
+          {
+            "days": 1156,
+            "risk": 0.2849
+          },
+          {
+            "days": 1186,
+            "risk": 0.2969
+          },
+          {
+            "days": 1217,
+            "risk": 0.3111
+          },
+          {
+            "days": 1247,
+            "risk": 0.3275
+          },
+          {
+            "days": 1278,
+            "risk": 0.339
+          },
+          {
+            "days": 1308,
+            "risk": 0.3458
+          },
+          {
+            "days": 1339,
+            "risk": 0.3504
+          },
+          {
+            "days": 1369,
+            "risk": 0.3684
+          },
+          {
+            "days": 1399,
+            "risk": 0.384
+          },
+          {
+            "days": 1430,
+            "risk": 0.3884
+          },
+          {
+            "days": 1460,
+            "risk": 0.3949
+          },
+          {
+            "days": 1491,
+            "risk": 0.4124
+          },
+          {
+            "days": 1521,
+            "risk": 0.4146
+          },
+          {
+            "days": 1552,
+            "risk": 0.421
+          },
+          {
+            "days": 1582,
+            "risk": 0.4318
+          },
+          {
+            "days": 1612,
+            "risk": 0.4445
+          },
+          {
+            "days": 1643,
+            "risk": 0.459
+          },
+          {
+            "days": 1673,
+            "risk": 0.4672
+          },
+          {
+            "days": 1704,
+            "risk": 0.4753
+          },
+          {
+            "days": 1734,
+            "risk": 0.4853
+          },
+          {
+            "days": 1765,
+            "risk": 0.4873
+          },
+          {
+            "days": 1795,
+            "risk": 0.4952
+          },
+          {
+            "days": 1826,
+            "risk": 0.5011
+          }
+        ]
+      }
+    },
+    {
+      "name": "Surgery ~4 years",
+      "stage1_clinical": {
+        "risk_5y": 0.2,
+        "risk_by_year": {
+          "1": 0.0225,
+          "2": 0.0586,
+          "3": 0.097,
+          "4": 0.1501,
+          "5": 0.2
+        },
+        "expected_time_years": 11.9,
+        "triage": {
+          "band": "red",
+          "action": "Refer for a weight-bearing knee X-ray",
+          "question": "Should this knee be X-rayed?"
+        },
+        "curve": [
+          {
+            "days": 0,
+            "risk": 0.0009
+          },
+          {
+            "days": 30,
+            "risk": 0.0009
+          },
+          {
+            "days": 60,
+            "risk": 0.0009
+          },
+          {
+            "days": 91,
+            "risk": 0.0009
+          },
+          {
+            "days": 121,
+            "risk": 0.0019
+          },
+          {
+            "days": 152,
+            "risk": 0.0047
+          },
+          {
+            "days": 182,
+            "risk": 0.0075
+          },
+          {
+            "days": 213,
+            "risk": 0.0103
+          },
+          {
+            "days": 243,
+            "risk": 0.0103
+          },
+          {
+            "days": 273,
+            "risk": 0.0141
+          },
+          {
+            "days": 304,
+            "risk": 0.0169
+          },
+          {
+            "days": 334,
+            "risk": 0.0197
+          },
+          {
+            "days": 365,
+            "risk": 0.0225
+          },
+          {
+            "days": 395,
+            "risk": 0.0262
+          },
+          {
+            "days": 426,
+            "risk": 0.0272
+          },
+          {
+            "days": 456,
+            "risk": 0.0291
+          },
+          {
+            "days": 486,
+            "risk": 0.0329
+          },
+          {
+            "days": 517,
+            "risk": 0.0377
+          },
+          {
+            "days": 547,
+            "risk": 0.0415
+          },
+          {
+            "days": 578,
+            "risk": 0.0472
+          },
+          {
+            "days": 608,
+            "risk": 0.0481
+          },
+          {
+            "days": 639,
+            "risk": 0.051
+          },
+          {
+            "days": 669,
+            "risk": 0.0529
+          },
+          {
+            "days": 699,
+            "risk": 0.0548
+          },
+          {
+            "days": 730,
+            "risk": 0.0586
+          },
+          {
+            "days": 760,
+            "risk": 0.0605
+          },
+          {
+            "days": 791,
+            "risk": 0.0663
+          },
+          {
+            "days": 821,
+            "risk": 0.0721
+          },
+          {
+            "days": 852,
+            "risk": 0.0749
+          },
+          {
+            "days": 882,
+            "risk": 0.0769
+          },
+          {
+            "days": 913,
+            "risk": 0.0798
+          },
+          {
+            "days": 943,
+            "risk": 0.0846
+          },
+          {
+            "days": 973,
+            "risk": 0.0865
+          },
+          {
+            "days": 1004,
+            "risk": 0.0922
+          },
+          {
+            "days": 1034,
+            "risk": 0.0941
+          },
+          {
+            "days": 1065,
+            "risk": 0.0951
+          },
+          {
+            "days": 1095,
+            "risk": 0.097
+          },
+          {
+            "days": 1126,
+            "risk": 0.1009
+          },
+          {
+            "days": 1156,
+            "risk": 0.1038
+          },
+          {
+            "days": 1186,
+            "risk": 0.1086
+          },
+          {
+            "days": 1217,
+            "risk": 0.1144
+          },
+          {
+            "days": 1247,
+            "risk": 0.1212
+          },
+          {
+            "days": 1278,
+            "risk": 0.126
+          },
+          {
+            "days": 1308,
+            "risk": 0.1289
+          },
+          {
+            "days": 1339,
+            "risk": 0.1308
+          },
+          {
+            "days": 1369,
+            "risk": 0.1386
+          },
+          {
+            "days": 1399,
+            "risk": 0.1453
+          },
+          {
+            "days": 1430,
+            "risk": 0.1472
+          },
+          {
+            "days": 1460,
+            "risk": 0.1501
+          },
+          {
+            "days": 1491,
+            "risk": 0.1579
+          },
+          {
+            "days": 1521,
+            "risk": 0.1589
+          },
+          {
+            "days": 1552,
+            "risk": 0.1618
+          },
+          {
+            "days": 1582,
+            "risk": 0.1668
+          },
+          {
+            "days": 1612,
+            "risk": 0.1727
+          },
+          {
+            "days": 1643,
+            "risk": 0.1795
+          },
+          {
+            "days": 1673,
+            "risk": 0.1835
+          },
+          {
+            "days": 1704,
+            "risk": 0.1874
+          },
+          {
+            "days": 1734,
+            "risk": 0.1922
+          },
+          {
+            "days": 1765,
+            "risk": 0.1932
+          },
+          {
+            "days": 1795,
+            "risk": 0.1971
+          },
+          {
+            "days": 1826,
+            "risk": 0.2
+          }
+        ]
+      },
+      "stage2_with_xray": {
+        "risk_5y": 0.618,
+        "risk_by_year": {
+          "1": 0.091,
+          "2": 0.2242,
+          "3": 0.3507,
+          "4": 0.5011,
+          "5": 0.618
+        },
+        "expected_time_years": 4.0,
+        "triage": {
+          "band": "red",
+          "action": "Refer to OA specialist \u2014 priority, discuss surgery",
+          "question": "Refer to an OA specialist to discuss surgery?"
+        },
+        "curve": [
+          {
+            "days": 0,
+            "risk": 0.0039
+          },
+          {
+            "days": 30,
+            "risk": 0.0039
+          },
+          {
+            "days": 60,
+            "risk": 0.0039
+          },
+          {
+            "days": 91,
+            "risk": 0.0039
+          },
+          {
+            "days": 121,
+            "risk": 0.0078
+          },
+          {
+            "days": 152,
+            "risk": 0.0194
+          },
+          {
+            "days": 182,
+            "risk": 0.031
+          },
+          {
+            "days": 213,
+            "risk": 0.0424
+          },
+          {
+            "days": 243,
+            "risk": 0.0424
+          },
+          {
+            "days": 273,
+            "risk": 0.0576
+          },
+          {
+            "days": 304,
+            "risk": 0.0688
+          },
+          {
+            "days": 334,
+            "risk": 0.08
+          },
+          {
+            "days": 365,
+            "risk": 0.091
+          },
+          {
+            "days": 395,
+            "risk": 0.1056
+          },
+          {
+            "days": 426,
+            "risk": 0.1093
+          },
+          {
+            "days": 456,
+            "risk": 0.1166
+          },
+          {
+            "days": 486,
+            "risk": 0.131
+          },
+          {
+            "days": 517,
+            "risk": 0.1489
+          },
+          {
+            "days": 547,
+            "risk": 0.1629
+          },
+          {
+            "days": 578,
+            "risk": 0.1837
+          },
+          {
+            "days": 608,
+            "risk": 0.1871
+          },
+          {
+            "days": 639,
+            "risk": 0.1973
+          },
+          {
+            "days": 669,
+            "risk": 0.2041
+          },
+          {
+            "days": 699,
+            "risk": 0.2108
+          },
+          {
+            "days": 730,
+            "risk": 0.2242
+          },
+          {
+            "days": 760,
+            "risk": 0.2309
+          },
+          {
+            "days": 791,
+            "risk": 0.2507
+          },
+          {
+            "days": 821,
+            "risk": 0.2703
+          },
+          {
+            "days": 852,
+            "risk": 0.2799
+          },
+          {
+            "days": 882,
+            "risk": 0.2863
+          },
+          {
+            "days": 913,
+            "risk": 0.2958
+          },
+          {
+            "days": 943,
+            "risk": 0.3114
+          },
+          {
+            "days": 973,
+            "risk": 0.3176
+          },
+          {
+            "days": 1004,
+            "risk": 0.3358
+          },
+          {
+            "days": 1034,
+            "risk": 0.3418
+          },
+          {
+            "days": 1065,
+            "risk": 0.3447
+          },
+          {
+            "days": 1095,
+            "risk": 0.3507
+          },
+          {
+            "days": 1126,
+            "risk": 0.3625
+          },
+          {
+            "days": 1156,
+            "risk": 0.3713
+          },
+          {
+            "days": 1186,
+            "risk": 0.3858
+          },
+          {
+            "days": 1217,
+            "risk": 0.4029
+          },
+          {
+            "days": 1247,
+            "risk": 0.4224
+          },
+          {
+            "days": 1278,
+            "risk": 0.4361
+          },
+          {
+            "days": 1308,
+            "risk": 0.4442
+          },
+          {
+            "days": 1339,
+            "risk": 0.4495
+          },
+          {
+            "days": 1369,
+            "risk": 0.4706
+          },
+          {
+            "days": 1399,
+            "risk": 0.4885
+          },
+          {
+            "days": 1430,
+            "risk": 0.4935
+          },
+          {
+            "days": 1460,
+            "risk": 0.5011
+          },
+          {
+            "days": 1491,
+            "risk": 0.5209
+          },
+          {
+            "days": 1521,
+            "risk": 0.5233
+          },
+          {
+            "days": 1552,
+            "risk": 0.5306
+          },
+          {
+            "days": 1582,
+            "risk": 0.5426
+          },
+          {
+            "days": 1612,
+            "risk": 0.5567
+          },
+          {
+            "days": 1643,
+            "risk": 0.5727
+          },
+          {
+            "days": 1673,
+            "risk": 0.5816
+          },
+          {
+            "days": 1704,
+            "risk": 0.5904
+          },
+          {
+            "days": 1734,
+            "risk": 0.6012
+          },
+          {
+            "days": 1765,
+            "risk": 0.6033
+          },
+          {
+            "days": 1795,
+            "risk": 0.6117
+          },
+          {
+            "days": 1826,
+            "risk": 0.618
+          }
+        ]
+      }
+    }
+  ]
+}
