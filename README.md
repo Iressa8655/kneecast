@@ -5,17 +5,27 @@ progress to a **total knee replacement**, so clinicians triage referrals.
 
 DASH Hackathon 2026 · Orange group. Working product name (pending team vote).
 
-**Live:** https://iressa8655.github.io/kneecast/
+The **public website** and the **clinician-facing tool** are deliberately separate:
+
+| | Where | What |
+| --- | --- | --- |
+| **Website** | https://knee-cast-future.lovable.app/ | what KneeCast is — problem, approach, evidence, team |
+| **User page** | `demo.html` in this repo | the actual tool: enter a patient, get the two-stage recommendation. Needs the local model server |
+
+Keeping them apart means patient data entered in the tool never leaves the
+machine it runs on — the public site is static and never sees it.
 
 ## What's here
 
-- `index.html` — the landing site (self-contained).
-- `demo.html` — interactive demo: enter a patient's data, get a risk curve.
-  Toggles between a clinical-only and a clinical + X-ray model. It calls the
-  local backend below.
+- `demo.html` — **the user page**: enter a patient's data, get the risk, the
+  two-stage referral recommendation and the expected time to surgery. Toggles
+  between the clinical-only and the clinical + X-ray model. Calls the local
+  backend below.
 - `backend/` — a small FastAPI "hospital server" that serves the survival model
   (`/predict`). See [`backend/README.md`](backend/README.md).
-- `group-pic.png` — team photo (add this file to show it in "Meet the team").
+- `examples/` — synthetic example patients, plus `precomputed_results.json`
+  (the models' real output on those patients) for use on the static website.
+- `index.html` — the original one-page site, superseded by the Lovable website.
 
 ## Try the demo locally
 
